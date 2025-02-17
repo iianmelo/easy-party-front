@@ -24,7 +24,7 @@
     "axios": "^1.6.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "cssnano": "^7.0.4",
+    "cssnano": "^7.0.6",
     "express": "^4.18.2",
     "lucide-react": "^0.424.0",
     "next": "^14.0.4",
