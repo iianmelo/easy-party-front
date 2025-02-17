@@ -1,8 +1,4 @@
-<p align="center">
-  <a href="http://citi.org.br">
-    <img src="https://raw.githubusercontent.com/jrmmendes/citi-doc-utils/master/citi_black.png" alt="CITi logo"/>
-  </a>
-</p>
+
 <p align="center">
   <img src="https://img.shields.io/badge/staging branch-develop-pink" alt="staging">
   <img src="https://img.shields.io/badge/production branch-main-blue" alt="production">
