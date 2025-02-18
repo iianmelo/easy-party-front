@@ -15,6 +15,7 @@ import {
 } from 'assets';
 import Image from 'next/image';
 import { Button } from 'components/ui/button';
+import Link from 'next/link';
 
 export default function Servicos() {
   return (
@@ -38,23 +39,33 @@ export default function Servicos() {
         </div>
         <div className="flex gap-5 px-8 h-full w-full justify-center">
             <div className="flex flex-col justify-between pl-6 pr-6">
-                <Image src={Alimentacao} alt="Logo" className="w-220 h-auto" />    
+            <Link href="/servicos/alimentacao">
+                <Image src={Alimentacao} alt="Logo" className="w-220 h-auto" />
+            </Link>
             </div>
             <div className="flex flex-col gap-8">
                 <div className="flex flex-row gap-5">
                     <div className="justify-center pl-6 pr-6">
+                    <Link href="/servicos/musica">
                         <Image src={Musica} alt="Logo" className="w-220 h-auto" />
+                    </Link>
                     </div>
                     <div className="justify-center pl-6 pr-6">
+                    <Link href="/servicos/musica">
                         <Image src={Musica2} alt="Logo" className="w-220 h-auto" />
+                    </Link>
                     </div>
                 </div>
                 <div className="flex flex-row gap-5">
                     <div className="justify-center pl-6 pr-6">
+                    <Link href="/servicos/decoracao">
                         <Image src={Decoracao} alt="Logo" className="w-220 h-auto" />
+                    </Link>
                     </div>
                     <div className="justify-center pl-6 pr-6">
+                    <Link href="/servicos/midia">
                         <Image src={Midia} alt="Logo" className="w-220 h-auto" />
+                    </Link>
                     </div>
                 </div>
             </div>
