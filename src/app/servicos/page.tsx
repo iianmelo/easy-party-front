@@ -1,13 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { TopBar, ServiceCard, Footer } from 'components';
+import { TopBar, Footer } from 'components';
 import {
-  PartyHome,
-  DJCard,
-  BuffetCard,
-  PlayCard,
-  PhotoCard,
   Alimentacao,
   Decoracao,
   Midia,
@@ -15,41 +10,26 @@ import {
   Musica2
 } from 'assets';
 import Image from 'next/image';
-import { Button } from 'components/ui/button';
 import Link from 'next/link';
 
 export default function Servicos() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [services, setServices] = useState([
-    { name: 'Alimentação', image: Alimentacao, link: '/servicos/alimentacao' },
-    { name: 'Música', image: Musica, link: '/servicos/musica' },
-    { name: 'Música2', image: Musica2, link: '/servicos/musica' },
-    { name: 'Decoração', image: Decoracao, link: '/servicos/decoracao' },
-    { name: 'Mídia', image: Midia, link: '/servicos/midia' },
-  ]);
 
   const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Aqui você pode adicionar a lógica para lidar com a pesquisa
     console.log('Pesquisando por:', searchTerm);
   };
 
-  const filteredServices = services.filter(service =>
-    service.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().includes(
-      searchTerm.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-    )
-  );
-
-  const [serviceAlimentacao, setServiceAlimentacao] = useState([
+  const [serviceAlimentacao] = useState([
     { name: 'Alimentação', image: Alimentacao, link: '/servicos/alimentacao' },
   ]);
 
-  const [serviceMusica, setServiceMusica] = useState([
+  const [serviceMusica] = useState([
     { name: 'Música', image: Musica, link: '/servicos/musica' },
     { name: 'Música2', image: Musica2, link: '/servicos/musica' },
   ]);
 
-  const [serviceRest, setServiceRest] = useState([
+  const [serviceRest] = useState([
     { name: 'Decoração', image: Decoracao, link: '/servicos/decoracao' },
     { name: 'Mídia', image: Midia, link: '/servicos/midia' },
   ]);
