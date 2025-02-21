@@ -81,7 +81,7 @@ export default function Servicos() {
             Serviços
           </h1>
           <p className="font-normal text-[18px] leading-[27px]">
-            Explore todos os nossos serviços.
+            Explore todos os nossos serviços!
           </p>
         </div>
         <div className="flex justify-center mt-20 mb-20">
