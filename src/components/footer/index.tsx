@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { Instagram, X, Facebook } from 'lucide-react';
 import { PartyLogo } from 'assets';
 
+
+
 const Footer: React.FC = () => {
   return (
     <div className="flex flex-col gap-8 px-12">
@@ -16,7 +18,7 @@ const Footer: React.FC = () => {
       </div>
       <div className="w-full border border-black "></div>
       <div className="flex justify-between items-center">
-        <p>2024 All rights reserved.</p>
+        <p>2025 All rights reserved.</p>
         <div className="flex gap-4 mb-4">
           <p>Privacy Policy</p>
           <p>Terms of Service</p>

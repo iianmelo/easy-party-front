@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { PartyLogo } from 'assets';
 import { Location } from 'components';
 import { Button } from 'components/ui/button';
+import { Bookmark, ShoppingCart } from 'lucide-react';
 
-const TopBar: React.FC = () => {
+const TopBarLogged: React.FC = () => {
   return (
     <div className="bg-[#d53232] items-center flex justify-between h-24 w-full pl-6 pr-6">
       <div
@@ -24,22 +25,36 @@ const TopBar: React.FC = () => {
           >
             Início
           </Button>
-            <Button
+          <Button
             className="text-black bg-transparent border-none shadow-none text-lg hover:bg-gray-200"
             onClick={() => (window.location.href = '/servicos')}
-            >
+          >
             Serviço
-            </Button>
-          <Button className="text-black bg-transparent border-none shadow-none text-lg hover:bg-gray-200" onClick={() => (window.location.href = '/aboutus')}>
+          </Button>
+          <Button
+            className="text-black bg-transparent border-none shadow-none text-lg hover:bg-gray-200"
+            onClick={() => (window.location.href = '/aboutus')}
+          >
             Sobre nós
           </Button>
         </div>
         <div className="flex gap-4">
-          <Button className="text-black bg-[#d53232] border border-black h-10 text-lg hover:bg-[#b02a2a]" onClick={() => (window.location.href = '/login')}>
-            Login
+          {/* Botão para Itens Salvos */}
+          <Button
+            className="flex items-center gap-2 text-black bg-transparent border border-black h-10 text-lg hover:bg-gray-200"
+            onClick={() => (window.location.href = '/saved-items')}
+          >
+            <Bookmark className="w-5 h-5" />
+            Salvos
           </Button>
-          <Button className="text-white bg-black h-10 text-lg hover:bg-gray-800" onClick={() => (window.location.href = '/register')}>
-            Cadastre-se
+
+          {/* Botão para Carrinho */}
+          <Button
+            className="flex items-center gap-2 text-white bg-black h-10 text-lg hover:bg-gray-800"
+            onClick={() => (window.location.href = '/cart')}
+          >
+            <ShoppingCart className="w-5 h-5" />
+            Carrinho
           </Button>
         </div>
       </div>
@@ -47,4 +62,4 @@ const TopBar: React.FC = () => {
   );
 };
 
-export default TopBar;
+export default TopBarLogged;
