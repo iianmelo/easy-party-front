@@ -13,6 +13,10 @@ import Decoracao from './Decoracao.png';
 import Midia from './Midia.png';
 import Musica from './Musica.png';
 import Musica2 from './Musica2.png';
+import DoceCard from './Alimentacao/DocesESalgados/DoceCard.png';
+import DoceCard2 from './Alimentacao/DocesESalgados/DoceCard2.png';
+import SalgadoCard from './Alimentacao/DocesESalgados/SalgadoCard.png';
+import SalgadoCard2 from './Alimentacao/DocesESalgados/SalgadoCard2.png';
 
 export {
   Logo,
@@ -29,5 +33,9 @@ export {
   Decoracao,
   Midia,
   Musica,
-  Musica2
+  Musica2,
+  DoceCard,
+  DoceCard2,
+  SalgadoCard,
+  SalgadoCard2
 };

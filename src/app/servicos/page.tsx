@@ -15,17 +15,21 @@ export default function Servicos() {
   };
 
   const [serviceAlimentacao] = useState([
-    { name: 'Alimentação', image: Alimentacao, link: '/servicos/alimentacao' }
+    {
+      name: 'Alimentação',
+      image: Alimentacao,
+      link: '/subcategoria-alimentacao'
+    }
   ]);
 
   const [serviceMusica] = useState([
-    { name: 'Música', image: Musica, link: '/servicos/musica' },
-    { name: 'Música2', image: Musica2, link: '/servicos/musica' }
+    { name: 'Música', image: Musica, link: '/subcategoria-musica' },
+    { name: 'Música2', image: Musica2, link: '/subcategoria-musica' }
   ]);
 
   const [serviceRest] = useState([
-    { name: 'Decoração', image: Decoracao, link: '/servicos/decoracao' },
-    { name: 'Mídia', image: Midia, link: '/servicos/midia' }
+    { name: 'Decoração', image: Decoracao, link: '/subcategoria-decoracao' },
+    { name: 'Mídia', image: Midia, link: '/subcategoria-midia' }
   ]);
 
   const filteredServiceAlimentacao = serviceAlimentacao.filter((service) =>
