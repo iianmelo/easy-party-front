@@ -1,13 +1,7 @@
 'use client';
 
 import { TopBar, ServiceCard, Footer } from 'components';
-import {
-  PartyHome,
-  DJCard,
-  BuffetCard,
-  PlayCard,
-  PhotoCard
-} from 'assets';
+import { PartyHome, DJCard, BuffetCard, PlayCard, PhotoCard } from 'assets';
 import Image from 'next/image';
 import { Button } from 'components/ui/button';
 
@@ -21,12 +15,12 @@ export default function Test() {
             Encontre o melhor serviço para sua Festa
           </h1>
           <p className="font-normal text-[18px] leading-[27px]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            varius enim in eros elementum tristique. Duis cursus, mi quis
-            viverra ornare, eros dolor interdum nulla, ut commodo diam libero
-            vitae erat.
+            Chegou a hora de transformar sua celebração em um momento
+            inesquecível! Seja um aniversário, casamento, formatura ou evento
+            corporativo, nós cuidamos de tudo para que você aproveite cada
+            instante sem preocupações.
           </p>
-          <Button className="bg-[#D53232] text-white border border-black w-[170px] text-[16px]">
+          <Button className="bg-[#D53232] text-white  w-[170px] text-[16px]">
             Monte sua festa
           </Button>
         </div>
@@ -40,35 +34,35 @@ export default function Test() {
               Serviços mais procurados
             </h1>
             <p className="font-normal text-[18px] leading-[27px]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
+            Navegue pelos nossos serviços mais procurados!
+              </p>
           </div>
           <Button className="text-black bg-[#d53232] border border-black h-10 text-lg hover:bg-[#b02a2a]">
             Ver todos
           </Button>
         </div>
-        <div className="flex gap-14 px-8 h-full justify-self-center">
+        <div className="flex px-8 h-full justify-self-center">
           <ServiceCard
             image={DJCard}
-            title="DJ Lorem Ipsum"
+            title="DJ"
             description="Música"
             price="R$99,90"
           />
           <ServiceCard
             image={BuffetCard}
-            title="Buffet Lorem Ipsum"
+            title="Buffet"
             description="Alimentação"
             price="R$99,90"
           />
           <ServiceCard
             image={PlayCard}
-            title="Brinquedo Lorem Ipsum"
-            description="Alimentação"
+            title="Brinquedo"
+            description="Brinquedos"
             price="R$99,90"
           />
           <ServiceCard
             image={PhotoCard}
-            title="Fotógrafo Lorem Ipsum"
+            title="Fotógrafo"
             description="Mídia"
             price="R$99,90"
           />
