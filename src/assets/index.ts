@@ -34,6 +34,7 @@ import MidiaCard from './MidiaCard.png';
 import mastercard from './mastercard.png';
 import visa from './visa.png';
 import pix from './pix.png';
+import Carrinho from './Carrinho.png';
 
 export {
   Logo,
@@ -43,6 +44,7 @@ export {
   BuffetCard2,
   BuffetCard3,
   BuffetCard4,
+  Carrinho,
   DJCard,
   PlayCard,
   PhotoCard,
