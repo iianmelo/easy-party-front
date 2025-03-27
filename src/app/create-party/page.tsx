@@ -33,6 +33,7 @@ const CreateParty: React.FC = () => {
 
     const handleSubmit = async () => {
         setLoading(true);
+        setHaveNothing(false);
         try {
             const data = await getServices({ prompt });
             if (data.length === 0) {

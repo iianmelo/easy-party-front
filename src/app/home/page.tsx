@@ -19,9 +19,12 @@ export default function Home() {
             opções para você. Do buffet à decoração, cuidamos de tudo para que você 
             aproveite cada momento sem preocupações!
           </p>
-          <Button className="bg-[#D53232] text-white  w-[170px] text-[16px]">
+            <Button 
+            className="bg-[#D53232] text-white w-[170px] text-[16px]" 
+            onClick={() => window.location.href = '/create-party'}
+            >
             Monte sua festa
-          </Button>
+            </Button>
         </div>
         <Image src={PartyHome} alt="Logo" className="h-full" />
       </div>
