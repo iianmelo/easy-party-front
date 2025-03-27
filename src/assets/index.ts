@@ -17,6 +17,13 @@ import DoceCard from './Alimentacao/DocesESalgados/DoceCard.png';
 import DoceCard2 from './Alimentacao/DocesESalgados/DoceCard2.png';
 import SalgadoCard from './Alimentacao/DocesESalgados/SalgadoCard.png';
 import SalgadoCard2 from './Alimentacao/DocesESalgados/SalgadoCard2.png';
+import ImgFesta from './ImgFesta.png';
+import ImgBalloons from './ImgBalloon.png';
+import VictorProfile from './VictorProfile.png';
+import IanProfile from './IanProfile.png';
+import GuiProfile from './GuiProfile.png';
+import RafaProfile from './RafaProfile.png';
+import JoaoProfile from './JoaoProfile.png';
 import entregador from './entregador.png';
 
 export {
@@ -34,7 +41,7 @@ export {
   Decoracao,
   Midia,
   Musica,
-  Musica2,
+  Musica2, ImgFesta, ImgBalloons, VictorProfile, IanProfile, GuiProfile, RafaProfile, JoaoProfile,
   DoceCard,
   DoceCard2,
   SalgadoCard,
