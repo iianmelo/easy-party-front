@@ -31,7 +31,7 @@ export default function Login() {
       
       <div className="flex flex-1 flex-col h-full justify-center items-center w-1/2 bg-[#D53232] gap-2">
         <h1 className="text-6xl text-white font-bold">
-          EasyParty
+          Easy Party
         </h1>
         <Image src={PartyLogo} alt='Logo EasyParty' />
       </div>
