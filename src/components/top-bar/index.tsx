@@ -30,7 +30,7 @@ const TopBar: React.FC = () => {
             >
             Serviço
             </Button>
-          <Button className="text-black bg-transparent border-none shadow-none text-lg hover:bg-gray-200" onClick={() => (window.location.href = '/aboutus')}>
+          <Button className="text-black bg-transparent border-none shadow-none text-lg hover:bg-gray-200" onClick={() => (window.location.href = '/landing-page')}>
             Sobre nós
           </Button>
         </div>
@@ -38,7 +38,7 @@ const TopBar: React.FC = () => {
           <Button className="text-black bg-[#d53232] border border-black h-10 text-lg hover:bg-[#b02a2a]" onClick={() => (window.location.href = '/login')}>
             Login
           </Button>
-          <Button className="text-white bg-black h-10 text-lg hover:bg-gray-800" onClick={() => (window.location.href = '/register')}>
+          <Button className="text-white bg-black h-10 text-lg hover:bg-gray-800" onClick={() => (window.location.href = '/signup')}>
             Cadastre-se
           </Button>
         </div>

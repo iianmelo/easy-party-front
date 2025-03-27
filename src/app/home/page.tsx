@@ -28,10 +28,6 @@ export default function Home() {
         </div>
         <Image src={PartyHome} alt="Logo" className="h-full" />
       </div>
-      <div className="flex flex-col py-10 gap-10 w-full bg-[#D53232]">
-        <div className="flex justify-between px-16 py-5 items-center">
-        </div>
-      </div>
       <Footer></Footer>
     </div>
   );

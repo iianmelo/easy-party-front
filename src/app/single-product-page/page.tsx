@@ -54,7 +54,7 @@ export default function SingleProductPage() {
       <TopBar></TopBar>
       <div className="flex gap-20 items-center justify-center mt-12">
         <div>
-          <Breadcrumb className='mb-3'>
+          <Breadcrumb className="mb-3">
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink href="/servicos">Serviços</BreadcrumbLink>
@@ -72,30 +72,30 @@ export default function SingleProductPage() {
             </BreadcrumbList>
           </Breadcrumb>
           <div className="flex gap-4">
-          {/* Miniaturas */}
-          <div className="flex flex-col gap-2">
-            {service.images.map((image, index) => (
-              <Image
-                key={index}
-                src={image}
-                alt={`Miniatura ${index + 1}`}
-                className="w-20 h-20 object-cover cursor-pointer border border-gray-300 hover:border-black"
-                onClick={() => setSelectedImage(image)} // Atualiza a imagem principal
-              />
-            ))}
-          </div>
+            {/* Miniaturas */}
+            <div className="flex flex-col gap-2">
+              {service.images.map((image, index) => (
+                <Image
+                  key={index}
+                  src={image}
+                  alt={`Miniatura ${index + 1}`}
+                  className="w-20 h-20 object-cover cursor-pointer border border-gray-300 hover:border-black"
+                  onClick={() => setSelectedImage(image)} // Atualiza a imagem principal
+                />
+              ))}
+            </div>
 
-          {/* Imagem Principal */}
-          <div>
-            <Image
-              src={selectedImage}
-              alt="Imagem Principal"
-              className=" h-[600px] w-[520px] object-cover"
-            />
+            {/* Imagem Principal */}
+            <div>
+              <Image
+                src={selectedImage}
+                alt="Imagem Principal"
+                className=" h-[600px] w-[520px] object-cover"
+              />
+            </div>
           </div>
         </div>
-        </div>
-        <div className='max-w-[600px]'>
+        <div className="max-w-[600px]">
           <h1 className="font-bold text-[40px]">{service.name}</h1>
           <h1 className="font-bold text-[24px]">{service.price}</h1>
           <div className="flex items-center mt-3">
@@ -132,7 +132,15 @@ export default function SingleProductPage() {
           </div>
           <p className="font-normal text-[16px] mt-3">{service.description}</p>
           <div className="flex flex-col gap-4 mt-20 ">
-            <Button onClick={() => router.push("/cart")}>Adicionar ao Carrinho</Button>
+            <Button onClick={() => router.push('/cart')}>
+              Adicionar ao Carrinho
+            </Button>
+            <Button
+              className="bg-white border border-black text-black"
+              onClick={() => (window.location.href = '/saved-items')}
+            >
+              Adicionar à Lista
+            </Button>
           </div>
           <div className="w-full h-[1px] bg-gray-200 my-4"></div>
           <Accordion type="single" collapsible>
