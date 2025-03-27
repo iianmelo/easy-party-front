@@ -1,31 +1,33 @@
+"use client";
+
 import Image from 'next/image';
+import { VictorProfile, BuffetCard, JoaoProfile, mastercard, visa, pix } from 'assets';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { Label } from '../../components/ui/label';
+import TopBar from '../../components/top-bar';
+import Footer from '../../components/footer';
 
 export default function PaymentPage() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Top Bar */}
-      <div className="bg-red-600 text-white flex justify-between items-center px-8 py-4">
-        <h1 className="text-lg font-bold">Recife - PE</h1>
-        <div className="flex space-x-4">
-          <a href="#" className="hover:underline">Início</a>
-          <a href="#" className="hover:underline">Serviços</a>
-        </div>
-      </div>
+      <TopBar />
 
       {/* Main Content */}
-      <div className="container mx-auto p-8 flex flex-col lg:flex-row justify-between">
+      <div className="container mx-auto p-8 flex flex-col lg:flex-row justify-between space-x-8">
         {/* Payment List */}
         <div className="w-full lg:w-2/3">
           <h2 className="text-3xl font-bold mb-6">Pagamento</h2>
           <div className="space-y-4">
-            {[{ name: 'Buffet Festa', category: 'Alimentação', price: 'R$ 1.002,00' },
-              { name: 'Barman João', category: 'Bebidas', price: 'R$ 959,90' },
-              { name: 'DJ Victor', category: 'Música', price: 'R$ 8.599,90' }].map((item, index) => (
-              <div key={index} className="flex justify-between p-4 bg-gray-200 rounded-lg">
-                <div>
+            {[
+              { name: 'Buffet Festa', category: 'Alimentação', price: 'R$ 1.002,00', image: BuffetCard },
+              { name: 'Barman João', category: 'Bebidas', price: 'R$ 959,90', image: JoaoProfile },
+              { name: 'DJ Victor', category: 'Música', price: 'R$ 8.599,90', image: VictorProfile }
+            ].map((item, index) => (
+              <div key={index} className="flex items-center space-x-4 p-4 bg-gray-200 rounded-lg">
+                <Image src={item.image} alt={item.name} width={50} height={50} className="rounded-full" />
+                <div className="flex-1">
                   <p className="font-semibold">{item.name}</p>
                   <p className="text-sm text-gray-600">{item.category}</p>
                 </div>
@@ -38,10 +40,10 @@ export default function PaymentPage() {
         {/* Payment Details */}
         <div className="w-full lg:w-1/3 mt-8 lg:mt-0 p-6 bg-red-600 text-white rounded-lg">
           <h3 className="text-xl font-bold mb-4">Detalhes do Cartão</h3>
-          <div className="flex space-x-2 mb-4">
-            <Image src="/mastercard.png" alt="Mastercard" width={40} height={30} />
-            <Image src="/visa.png" alt="Visa" width={40} height={30} />
-            <Image src="/pix.png" alt="Pix" width={40} height={30} />
+          <div className="flex gap-[72px] mb-4">
+            <Image src={mastercard} alt="Mastercard" width={80} height={30} />
+            <Image src={visa} alt="Visa" width={80} height={30} />
+            <Image src={pix} alt="Pix" width={80} height={30} />
           </div>
           <div className="space-y-2">
             <Label htmlFor="name">Nome no Cartão</Label>
@@ -71,14 +73,7 @@ export default function PaymentPage() {
       </div>
 
       {/* Footer */}
-      <div className="text-center text-sm p-4 border-t mt-8">
-        <p>2024 All rights reserved.</p>
-        <div className="flex justify-center space-x-4 mt-2">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookies Settings</a>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }
