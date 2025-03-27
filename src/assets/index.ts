@@ -30,6 +30,7 @@ import GuiProfile from './GuiProfile.png';
 import RafaProfile from './RafaProfile.png';
 import JoaoProfile from './JoaoProfile.png';
 import entregador from './entregador.png';
+import MidiaCard from './MidiaCard.png';
 
 export {
   Logo,
@@ -55,5 +56,7 @@ export {
   BarmanCard,
   BarmanCard2,
   BarmanCard3,
-  HeinekenCard
+  HeinekenCard,
+  entregador,
+  MidiaCard
 };
