@@ -10,5 +10,12 @@ import Decoracao from './Decoracao.png';
 import Midia from './Midia.png';
 import Musica from './Musica.png';
 import Musica2 from './Musica2.png';
+import ImgFesta from './ImgFesta.png';
+import ImgBalloons from './ImgBalloon.png';
+import VictorProfile from './VictorProfile.png';
+import IanProfile from './IanProfile.png';
+import GuiProfile from './GuiProfile.png';
+import RafaProfile from './RafaProfile.png';
+import JoaoProfile from './JoaoProfile.png';
 
-export { Logo, PartyLogo, PartyHome, BuffetCard, DJCard, PlayCard, PhotoCard, Alimentacao, Decoracao, Midia, Musica, Musica2 };
+export { Logo, PartyLogo, PartyHome, BuffetCard, DJCard, PlayCard, PhotoCard, Alimentacao, Decoracao, Midia, Musica, Musica2, ImgFesta, ImgBalloons, VictorProfile, IanProfile, GuiProfile, RafaProfile, JoaoProfile };
