@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Carrinho, BuffetCard, BarmanCard, DJCard } from 'assets';
-import { ItemCart } from 'components';
+import { ItemCart, RedSidebar } from 'components';
 
 const Page = () => {
   return (
@@ -37,8 +37,7 @@ const Page = () => {
           />
         </div>
       </div>
-      {/* Sidebar vermelha */}
-      <div style={{ width: '20%', backgroundColor: 'red' }}></div>
+      <RedSidebar/>
     </div>
   );
 };
