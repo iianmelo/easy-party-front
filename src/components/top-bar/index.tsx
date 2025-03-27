@@ -30,7 +30,7 @@ const TopBar: React.FC = () => {
             >
             Serviço
             </Button>
-          <Button className="text-black bg-transparent border-none shadow-none text-lg hover:bg-gray-200" onClick={() => (window.location.href = '/aboutus')}>
+          <Button className="text-black bg-transparent border-none shadow-none text-lg hover:bg-gray-200" onClick={() => (window.location.href = '/landing-page')}>
             Sobre nós
           </Button>
         </div>
