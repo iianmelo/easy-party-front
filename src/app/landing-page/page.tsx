@@ -43,7 +43,7 @@ export default function Test() {
             </p>
             <h1 className="font-bold text-[48px] leading-[58px]">
               {' '}
-              Pessoas resposáveis por desenvolver a plataforma
+              Pessoas responsáveis por desenvolver a plataforma
             </h1>
             <p className="font-normal text-[18px] leading-[27px]">
                 O nosso time é formado por jovens empreendedores que pensam e colocam em prática
