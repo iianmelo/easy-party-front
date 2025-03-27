@@ -1,11 +1,12 @@
 "use client";
 
 import Image from 'next/image';
-import { VictorProfile, BuffetCard, JoaoProfile, mastercard, visa, pix} from 'assets';
+import { VictorProfile, BuffetCard, JoaoProfile, mastercard, visa, pix } from 'assets';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { Label } from '../../components/ui/label';
 import TopBar from '../../components/top-bar';
+import Footer from '../../components/footer';
 
 export default function PaymentPage() {
   return (
@@ -40,9 +41,9 @@ export default function PaymentPage() {
         <div className="w-full lg:w-1/3 mt-8 lg:mt-0 p-6 bg-red-600 text-white rounded-lg">
           <h3 className="text-xl font-bold mb-4">Detalhes do Cartão</h3>
           <div className="flex gap-[72px] mb-4">
-            <Image src={mastercard} alt="" width={80} height={30} />
-            <Image src= {visa} alt="" width={80} height={30} />
-            <Image src= {pix} alt="" width={80} height={30} />
+            <Image src={mastercard} alt="Mastercard" width={80} height={30} />
+            <Image src={visa} alt="Visa" width={80} height={30} />
+            <Image src={pix} alt="Pix" width={80} height={30} />
           </div>
           <div className="space-y-2">
             <Label htmlFor="name">Nome no Cartão</Label>
@@ -72,14 +73,7 @@ export default function PaymentPage() {
       </div>
 
       {/* Footer */}
-      <div className="text-center text-sm p-4 border-t mt-8">
-        <p>2024 All rights reserved.</p>
-        <div className="flex justify-center space-x-4 mt-2">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Cookies Settings</a>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }
