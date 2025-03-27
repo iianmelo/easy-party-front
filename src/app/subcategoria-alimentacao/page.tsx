@@ -9,7 +9,12 @@ import {
   SalgadoCard,
   SalgadoCard2,
   DoceCard,
-  DoceCard2
+  DoceCard2,
+  BuffetCart2,
+  BarmanCard,
+  BarmanCard2,
+  BarmanCard3,
+  HeinekenCard
 } from 'assets';
 
 export default function Servicos() {
@@ -18,19 +23,71 @@ export default function Servicos() {
   // Estrutura de dados para os serviços agrupados por categoria
   const categories = {
     'Doces e Salgados': [
-      { image: SalgadoCard, title: 'Salgados', description: 'Preço do combo', price: 'R$99,90' },
-      { image: DoceCard, title: 'Docinhos', description: 'Preço do combo', price: 'R$99,90' },
-      { image: DoceCard2, title: 'Docinhos', description: 'Preço de 100 unidades', price: 'R$99,90' },
-      { image: SalgadoCard2, title: 'Salgados', description: 'Preço do combo', price: 'R$99,90' },
+      {
+        image: SalgadoCard,
+        title: 'Salgados',
+        description: 'Preço do combo',
+        price: 'R$99,90'
+      },
+      {
+        image: DoceCard,
+        title: 'Docinhos',
+        description: 'Preço do combo',
+        price: 'R$99,90'
+      },
+      {
+        image: DoceCard2,
+        title: 'Docinhos',
+        description: 'Preço de 100 unidades',
+        price: 'R$99,90'
+      },
+      {
+        image: SalgadoCard2,
+        title: 'Salgados',
+        description: 'Preço do combo',
+        price: 'R$99,90'
+      }
     ],
     Buffet: [
-      { image: BuffetCard, title: 'Buffet Completo', description: 'Preço por pessoa', price: 'R$199,90' },
-      { image: BuffetCard, title: 'Buffet Premium', description: 'Preço por pessoa', price: 'R$299,90' },
+      {
+        image: BuffetCard,
+        title: 'Buffet para Festas',
+        description: 'Preço por pessoa',
+        price: 'R$99,90'
+      },
+      {
+        image: BuffetCart2,
+        title: 'Buffet Premium',
+        description: 'Preço por pessoa',
+        price: 'R$299,90'
+      }
     ],
     Bebidas: [
-      { image: BuffetCard, title: 'Refrigerantes', description: 'Preço por litro', price: 'R$9,90' },
-      { image: BuffetCard, title: 'Sucos Naturais', description: 'Preço por litro', price: 'R$14,90' },
-    ],
+      {
+        image: HeinekenCard,
+        title: 'Caixas Heineken',
+        description: 'Preço por caixa',
+        price: 'R$49,90'
+      },
+      {
+        image: BarmanCard3,
+        title: 'Barman João',
+        description: 'Preço por 4h',
+        price: 'R$299,90'
+      },
+      {
+        image: BarmanCard,
+        title: 'Barman Guilherme',
+        description: 'Preço por 4h',
+        price: 'R$199,90'
+      },
+      {
+        image: BarmanCard2,
+        title: 'Barman José',
+        description: 'Preço por 4h',
+        price: 'R$399,90'
+      }
+    ]
   };
 
   // Função para filtrar os serviços de uma categoria com base no termo de pesquisa
@@ -87,18 +144,25 @@ export default function Servicos() {
                 {filteredServices.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-8">
                     {filteredServices.map((service, index) => (
-                      <ServiceCard
+                        <div
                         key={index}
-                        image={service.image}
-                        title={service.title}
-                        description={service.description}
-                        price={service.price}
-                      />
+                        onClick={() => window.location.href = `/single-product-page?title=${encodeURIComponent(service.title)}`}
+                        className="cursor-pointer"
+                        >
+                        <ServiceCard
+                          key={index}
+                          image={service.image}
+                          title={service.title}
+                          description={service.description}
+                          price={service.price}
+                        />
+                        </div>
                     ))}
                   </div>
                 ) : (
                   <p className="text-center text-gray-500">
-                    Nenhum serviço encontrado para "{searchTerm}" na categoria {categoryName}.
+                    Nenhum serviço encontrado para "{searchTerm}" na categoria{' '}
+                    {categoryName}.
                   </p>
                 )}
               </div>
