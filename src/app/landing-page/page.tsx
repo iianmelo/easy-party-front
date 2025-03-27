@@ -22,7 +22,7 @@ export default function Test() {
       <div className="flex items-center h-full justify-between">
         <div className="pl-14 flex flex-col gap-6 max-w-[580px] justify-start">
           <h1 className="text-[56px] font-bold leading-[68px] ">
-            EasyParty
+            Easy Party
           </h1>
           <p className="font-normal text-[18px] leading-[27px] text-left text-justify">
             Organizar um evento nunca foi tão simples! Na Easy Party, utilizamos inteligência artificial para recomendar os
