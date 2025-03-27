@@ -31,6 +31,9 @@ import RafaProfile from './RafaProfile.png';
 import JoaoProfile from './JoaoProfile.png';
 import entregador from './entregador.png';
 import MidiaCard from './MidiaCard.png';
+import mastercard from './mastercard.png';
+import visa from './visa.png';
+import pix from './pix.png';
 
 export {
   Logo,
@@ -58,5 +61,8 @@ export {
   BarmanCard3,
   HeinekenCard,
   entregador,
-  MidiaCard
+  MidiaCard,
+  mastercard,
+  visa,
+  pix
 };
