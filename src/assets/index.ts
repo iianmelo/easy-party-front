@@ -22,6 +22,13 @@ import BarmanCard from './Alimentacao/Bebidas/BarmanCard.png';
 import BarmanCard2 from './Alimentacao/Bebidas/BarmanCard2.png';
 import BarmanCard3 from './Alimentacao/Bebidas/BarmanCard3.png';
 import HeinekenCard from './Alimentacao/Bebidas/HeinekenCard.png';
+import ImgFesta from './ImgFesta.png';
+import ImgBalloons from './ImgBalloon.png';
+import VictorProfile from './VictorProfile.png';
+import IanProfile from './IanProfile.png';
+import GuiProfile from './GuiProfile.png';
+import RafaProfile from './RafaProfile.png';
+import JoaoProfile from './JoaoProfile.png';
 
 export {
   Logo,
@@ -38,7 +45,7 @@ export {
   Decoracao,
   Midia,
   Musica,
-  Musica2,
+  Musica2, ImgFesta, ImgBalloons, VictorProfile, IanProfile, GuiProfile, RafaProfile, JoaoProfile,
   DoceCard,
   DoceCard2,
   SalgadoCard,
