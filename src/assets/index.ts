@@ -17,6 +17,11 @@ import DoceCard from './Alimentacao/DocesESalgados/DoceCard.png';
 import DoceCard2 from './Alimentacao/DocesESalgados/DoceCard2.png';
 import SalgadoCard from './Alimentacao/DocesESalgados/SalgadoCard.png';
 import SalgadoCard2 from './Alimentacao/DocesESalgados/SalgadoCard2.png';
+import BuffetCart2 from './Alimentacao/Buffet/BuffetCart2.png';
+import BarmanCard from './Alimentacao/Bebidas/BarmanCard.png';
+import BarmanCard2 from './Alimentacao/Bebidas/BarmanCard2.png';
+import BarmanCard3 from './Alimentacao/Bebidas/BarmanCard3.png';
+import HeinekenCard from './Alimentacao/Bebidas/HeinekenCard.png';
 
 export {
   Logo,
@@ -37,5 +42,10 @@ export {
   DoceCard,
   DoceCard2,
   SalgadoCard,
-  SalgadoCard2
+  SalgadoCard2,
+  BuffetCart2,
+  BarmanCard,
+  BarmanCard2,
+  BarmanCard3,
+  HeinekenCard
 };
