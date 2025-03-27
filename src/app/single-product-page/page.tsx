@@ -131,7 +131,7 @@ export default function SingleProductPage() {
           <p className="font-normal text-[16px] mt-3">{service.description}</p>
           <div className="flex flex-col gap-4 mt-20 ">
             <Button>Adicionar ao Carrinho</Button>
-            <Button className="bg-white border border-black text-black">
+            <Button className="bg-white border border-black text-black" onClick={() => (window.location.href = '/saved-items')}>
               Adicionar à Lista
             </Button>
           </div>
