@@ -14,7 +14,7 @@ const TopBarLogged: React.FC = () => {
       >
         <Image src={PartyLogo} alt="Logo" width={100} height={100} />
       </div>
-      <div className="flex-1 flex justify-end items-center pr-4">
+      <div className="absolute left-[46%] flex justify-center items-center pr-4">
         <Location location="Recife - PE"></Location>
       </div>
       <div className="flex gap-4 ">
@@ -33,7 +33,7 @@ const TopBarLogged: React.FC = () => {
           </Button>
           <Button
             className="text-black bg-transparent border-none shadow-none text-lg hover:bg-gray-200"
-            onClick={() => (window.location.href = '/aboutus')}
+            onClick={() => (window.location.href = '/landing-page')}
           >
             Sobre nós
           </Button>

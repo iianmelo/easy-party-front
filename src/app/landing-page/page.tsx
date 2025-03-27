@@ -11,6 +11,7 @@ import {
   JoaoProfile
 } from 'assets';
 import Image from 'next/image';
+import CompanySignupForm from 'components/company-form';
 
 export default function Test() {
   return (
@@ -79,6 +80,15 @@ export default function Test() {
           />
         </div>
       </div>
+      <div>
+        <h1 className="text-[48px] font-bold text-center mt-10">
+          Cadastre sua empresa
+        </h1>
+        <p className="text-[18px] font-normal text-center">
+          Faça parte da nossa plataforma e seja recomendado para diversos eventos
+        </p>
+      </div>
+      <CompanySignupForm></CompanySignupForm>
       <Footer></Footer>
     </div>
   );
