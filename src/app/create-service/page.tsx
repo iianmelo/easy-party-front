@@ -18,7 +18,7 @@ export default function CreateService() {
     <div className="w-full h-full">
         <TopBar></TopBar>
         <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100">
-        <h2 className="text-[50px] font-bold mb-20">Create a Service</h2>
+        <h2 className="text-[50px] font-bold mb-20">Cadastre seu serviço</h2>
         <div className="flex flex-col md:flex-row bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl gap-6">
             <div className="flex items-center justify-center w-full md:w-1/2 border-dashed border-2 border-gray-300 rounded-lg p-6">
             <span className="text-gray-400 text-sm">Anexe suas imagens</span>

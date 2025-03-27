@@ -1,6 +1,6 @@
 'use client';
 
-import { Logo } from 'assets';
+import { ImgBalloons, Logo } from 'assets';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
@@ -27,8 +27,8 @@ export default function Login() {
     <div className="flex flex-1 flex-col h-full justify-around items-center">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <div>
-            <Image src={Logo} alt="Logo citi" />
+          <div className="flex justify-center items-center">
+            <Image src={ImgBalloons} alt="Logo" height={220}/>
           </div>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
@@ -51,7 +51,7 @@ export default function Login() {
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full">Sign in</Button>
+          <Button className="w-full bg-[#d53232] hover:bg-red-500">Sign in</Button>
         </CardFooter>
       </Card>
     </div>

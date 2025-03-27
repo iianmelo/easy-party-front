@@ -13,7 +13,7 @@ import {
 } from '../../components/ui/card';
 import { Input } from '../../components/ui/input';
 import { Label } from '../../components/ui/label';
-import {PartyLogo, entregador} from '../../assets/index';
+import {PartyLogo} from '../../assets/index';
 
 
 export default function Login() {
@@ -40,13 +40,12 @@ export default function Login() {
           <CardHeader className='flex justify-center items-center flex-col'>
             <CardTitle className="text-2xl text-gray-950 pb-4">Signup</CardTitle>
             <CardDescription className="text-sm text-muted-foreground w-full flex flex-row gap-4">
-              <button className='bg-[#5985E5] rounded-md p-2 w-full hover:bg-blue-800' onClick={() => {setCliente(true); setPrestador(false)}}>
+              <button className='bg-[#d53232] rounded-md p-2 w-full hover:bg-red-500' onClick={() => {setCliente(true); setPrestador(false)}}>
                 <div className='flex justify-center items-center gap-2 text-white'>
                   Cliente
                 </div>
               </button>
-              <button className='bg-[#5985E5] rounded-md p-2 w-full flex gap-2 justify-center items-center hover:bg-blue-800' onClick={() => {setPrestador(true); setCliente(false)}}>
-                <Image src={entregador} alt='entregador' className='w-7'/>
+              <button className='bg-[#d53232] rounded-md p-2 w-full flex gap-2 justify-center items-center hover:bg-red-500' onClick={() => {setPrestador(true); setCliente(false)}}>
                 <div className='flex justify-center items-center gap-2 text-white'>
                   Fornecedor
                 </div>
@@ -57,11 +56,11 @@ export default function Login() {
             {cliente ? (
               <>
                 <div className="grid gap-2">
-                  <Label htmlFor="name">Name</Label>
+                  <Label htmlFor="name">Nome</Label>
                   <Input
                     id="name"
                     type="text"
-                    placeholder="Your Name"
+                    placeholder="Seu Nome"
                     required
                     className='bg-transparent border-b-2 border-gray-300'
                   />
@@ -77,7 +76,7 @@ export default function Login() {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Senha</Label>
                   <Input
                     id="password"
                     type="password"
@@ -86,7 +85,7 @@ export default function Login() {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="passwordConfirmation">Password Confirmation</Label>
+                  <Label htmlFor="passwordConfirmation">Confirme sua senha</Label>
                   <Input
                     id="passwordConfirmation"
                     type="password"
@@ -108,7 +107,7 @@ export default function Login() {
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="email">Nome da empresa</Label>
+                  <Label htmlFor="email">Contato</Label>
                   <Input
                     id="email"
                     type="email"
@@ -126,13 +125,22 @@ export default function Login() {
                     className='bg-transparent border-b-2 border-gray-300'
                   />
                 </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="password">Confirme sua senha</Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    required
+                    className='bg-transparent border-b-2 border-gray-300'
+                  />
+                </div>
               </>
             ):(
               <></>
             )}
           </CardContent>
           <CardFooter>
-            <button type="submit" className="w-full bg-[#3792DE] rounded-md p-2 text-white hover:bg-blue-800">Sign up</button>
+            <button type="submit" className="w-full bg-[#d53232] rounded-md p-2 text-white hover:bg-red-500">Sign up</button>
           </CardFooter>
         </Card>
       </div>
