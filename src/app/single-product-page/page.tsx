@@ -19,6 +19,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator
 } from 'components/ui/breadcrumb';
+import { useRouter } from 'next/navigation';
 
 interface Service {
   serviceCategory: string;
@@ -44,6 +45,7 @@ const Teste: Service = {
 };
 
 export default function SingleProductPage() {
+  const router = useRouter();
   const service = Teste;
   const [selectedImage, setSelectedImage] = useState(service.images[0]);
 
@@ -130,10 +132,7 @@ export default function SingleProductPage() {
           </div>
           <p className="font-normal text-[16px] mt-3">{service.description}</p>
           <div className="flex flex-col gap-4 mt-20 ">
-            <Button>Adicionar ao Carrinho</Button>
-            <Button className="bg-white border border-black text-black">
-              Adicionar à Lista
-            </Button>
+            <Button onClick={() => router.push("/cart")}>Adicionar ao Carrinho</Button>
           </div>
           <div className="w-full h-[1px] bg-gray-200 my-4"></div>
           <Accordion type="single" collapsible>

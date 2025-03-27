@@ -30,6 +30,7 @@ import GuiProfile from './GuiProfile.png';
 import RafaProfile from './RafaProfile.png';
 import JoaoProfile from './JoaoProfile.png';
 import entregador from './entregador.png';
+import Carrinho from './Carrinho.png';
 
 export {
   Logo,
@@ -39,6 +40,7 @@ export {
   BuffetCard2,
   BuffetCard3,
   BuffetCard4,
+  Carrinho,
   DJCard,
   PlayCard,
   PhotoCard,
