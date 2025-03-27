@@ -74,8 +74,8 @@ export default function Servicos() {
   return (
     <div className="w-full h-full">
       <TopBar></TopBar>
-      <div className="flex-col items-center h-full justify-between mb-20">
-        <div className="pl-14 flex flex-col gap-6 w-full text-center justify-start mt-40">
+      <div className="flex-col items-center justify-between mb-20">
+        <div className="flex flex-col gap-6 w-full text-center justify-start mt-40">
           <h1 className="text-[56px] font-bold leading-[68px] ">Serviços</h1>
           <p className="font-normal text-[18px] leading-[27px]">
             Explore todos os nossos serviços!
@@ -116,7 +116,7 @@ export default function Servicos() {
           </div>
           <div className="flex flex-col gap-8">
             <div className="flex flex-row gap-5">
-              <div className="flex gap-5 px-8 h-full w-full justify-center">
+              <div className="flex gap-5 px-8 w-full justify-center">
                 {filteredServiceMusica.map((serviceMusica) => (
                   <div
                     key={serviceMusica.name}

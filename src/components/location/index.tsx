@@ -8,7 +8,7 @@ interface TopBarProps {
 const TopBar: React.FC<TopBarProps> = ({ location }) => {
     return (
         <div className="flex items-center justify-center gap-2">
-            <div className="flex justify-between"> 
+            <div className="flex gap-2"> 
                 <p className='font-medium text-lg leading-6'>{location}</p>
             </div>
             <MapPin className='h-8 w-8'></MapPin>

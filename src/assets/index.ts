@@ -17,6 +17,7 @@ import DoceCard from './Alimentacao/DocesESalgados/DoceCard.png';
 import DoceCard2 from './Alimentacao/DocesESalgados/DoceCard2.png';
 import SalgadoCard from './Alimentacao/DocesESalgados/SalgadoCard.png';
 import SalgadoCard2 from './Alimentacao/DocesESalgados/SalgadoCard2.png';
+import entregador from './entregador.png';
 
 export {
   Logo,
@@ -37,5 +38,6 @@ export {
   DoceCard,
   DoceCard2,
   SalgadoCard,
-  SalgadoCard2
+  SalgadoCard2,
+  entregador
 };
