@@ -25,10 +25,12 @@ export default function Test() {
             EasyParty
           </h1>
           <p className="font-normal text-[18px] leading-[27px] text-left text-justify">
-            Organizar um evento nunca foi tão fácil! Na Easy Party, transformamos seus momentos especiais em experiências inesquecíveis. Seja um casamento dos sonhos,
-            uma festa de aniversário, um evento corporativo ou qualquer outra celebração, cuidamos de cada detalhe para que você aproveite ao máximo. Oferecemos buffet completo,
-            decoração personalizada, música, iluminação, entretenimento e muito mais, tudo pensado para atender ao seu estilo e necessidade. Com uma equipe experiente e serviços
-            de alta qualidade, garantimos eventos únicos, cheios de sabor e sofisticação.
+            Organizar um evento nunca foi tão simples! Na Easy Party, utilizamos inteligência artificial para recomendar os
+            melhores serviços para a sua celebração, garantindo que cada detalhe seja perfeito. Seja um casamento dos sonhos,
+            uma festa de aniversário, um evento corporativo ou qualquer outra ocasião especial, nossa IA analisa suas preferências
+            e sugere fornecedores ideais para buffet, decoração, música, iluminação, entretenimento e muito mais. Com tecnologia
+            avançada e uma curadoria especializada, ajudamos você a criar eventos únicos, cheios de estilo e sofisticação, sem complicações.
+            Deixe a Easy Party tornar sua festa inesquecível com recomendações sob medida para você!
           </p>
         </div>
         <Image src={ImgBalloons} alt="Logo" className='mr-20' />
