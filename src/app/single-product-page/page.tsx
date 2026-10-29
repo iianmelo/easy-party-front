@@ -1,168 +1,186 @@
 'use client';
 
 import { useState } from 'react';
-import { TopBar, Footer } from 'components';
-import { BuffetCard, BuffetCard2, BuffetCard3, BuffetCard4 } from 'assets';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { getProduct } from 'data/catalog';
+import PageShell from 'components/page-shell';
+import Rating from 'components/rating';
+import EmptyState from 'components/empty-state';
 import { Button } from 'components/ui/button';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger
-} from 'components/ui/accordion';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator
-} from 'components/ui/breadcrumb';
-import { useRouter } from 'next/navigation';
+import { formatBRL } from 'lib/format';
+import { useCommerce } from 'providers/commerce';
+import { Suspense } from 'react';
 
-interface Service {
-  serviceCategory: string;
-  name: string;
-  price: string;
-  stars: number;
-  reviews: number;
-  images: string[];
-  description: string;
-  events: string[];
-}
+function ProductContent() {
+  const params = useSearchParams();
+  const product = getProduct(params.get('id'));
+  const { addToCart, toggleSaved, isSaved } = useCommerce();
+  const [imageIndex, setImageIndex] = useState(0);
+  const [qty, setQty] = useState(1);
+  const [notice, setNotice] = useState('');
 
-const Teste: Service = {
-  serviceCategory: 'Alimentação',
-  name: 'Buffet para Festas',
-  price: 'R$99,90 por pessoa',
-  stars: 3.4,
-  reviews: 10,
-  images: [BuffetCard, BuffetCard2, BuffetCard3, BuffetCard4],
-  description:
-    'Somos um buffet especializado na criação de experiências gastronômicas inesquecíveis para eventos. Com anos de expertise no mercado, oferecemos um serviço de alta qualidade, combinando sabor, sofisticação e uma apresentação impecável. Nosso compromisso é tornar sua celebração ainda mais especial, proporcionando pratos deliciosos, preparados com ingredientes frescos e selecionados.',
-  events: ['Casamento', 'Aniversário', 'Corporativo']
-};
+  if (!product) {
+    return (
+      <PageShell>
+        <section className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+          <EmptyState
+            title="Serviço não encontrado"
+            body="Esse link não corresponde a um item do catálogo."
+            action={
+              <Button asChild>
+                <Link href="/servicos">Voltar aos serviços</Link>
+              </Button>
+            }
+          />
+        </section>
+      </PageShell>
+    );
+  }
 
-export default function SingleProductPage() {
-  const router = useRouter();
-  const service = Teste;
-  const [selectedImage, setSelectedImage] = useState(service.images[0]);
+  const image = product.gallery[imageIndex] ?? product.image;
+  const saved = isSaved(product.id);
 
   return (
-    <div className="w-full h-full">
-      <TopBar></TopBar>
-      <div className="flex gap-20 items-center justify-center mt-12">
+    <PageShell>
+      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:py-14">
         <div>
-          <Breadcrumb className="mb-3">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/servicos">Serviços</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">
-                  {service.serviceCategory}
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>{service.name}</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <div className="flex gap-4">
-            {/* Miniaturas */}
-            <div className="flex flex-col gap-2">
-              {service.images.map((image, index) => (
-                <Image
-                  key={index}
-                  src={image}
-                  alt={`Miniatura ${index + 1}`}
-                  className="w-20 h-20 object-cover cursor-pointer border border-gray-300 hover:border-black"
-                  onClick={() => setSelectedImage(image)} // Atualiza a imagem principal
-                />
+          <nav aria-label="Trilha" className="mb-4 text-sm text-muted-foreground">
+            <Link href="/servicos" className="hover:text-primary">
+              Serviços
+            </Link>
+            <span aria-hidden> / </span>
+            <Link
+              href={
+                product.category === 'alimentacao'
+                  ? '/subcategoria-alimentacao'
+                  : product.category === 'musica'
+                    ? '/subcategoria-musica'
+                    : product.category === 'decoracao'
+                      ? '/subcategoria-decoracao'
+                      : '/subcategoria-midia'
+              }
+              className="hover:text-primary"
+            >
+              {product.categoryLabel}
+            </Link>
+            <span aria-hidden> / </span>
+            <span className="text-foreground">{product.title}</span>
+          </nav>
+          <div className="overflow-hidden rounded-[2rem] bg-secondary shadow-card">
+            <Image
+              src={image}
+              alt={product.title}
+              className="h-auto max-h-[560px] w-full object-cover"
+              priority
+            />
+          </div>
+          {product.gallery.length > 1 && (
+            <div className="mt-3 flex gap-2">
+              {product.gallery.map((shot, index) => (
+                <button
+                  key={`${product.id}-${index}`}
+                  type="button"
+                  onClick={() => setImageIndex(index)}
+                  aria-label={`Ver foto ${index + 1} de ${product.title}`}
+                  aria-pressed={index === imageIndex}
+                  className={`overflow-hidden rounded-2xl border-2 ${
+                    index === imageIndex ? 'border-primary' : 'border-transparent'
+                  }`}
+                >
+                  <Image src={shot} alt="" width={84} height={84} className="h-16 w-16 object-cover sm:h-20 sm:w-20" />
+                </button>
               ))}
             </div>
-
-            {/* Imagem Principal */}
-            <div>
-              <Image
-                src={selectedImage}
-                alt="Imagem Principal"
-                className=" h-[600px] w-[520px] object-cover"
-              />
-            </div>
-          </div>
+          )}
         </div>
-        <div className="max-w-[600px]">
-          <h1 className="font-bold text-[40px]">{service.name}</h1>
-          <h1 className="font-bold text-[24px]">{service.price}</h1>
-          <div className="flex items-center mt-3">
-            {Array.from({ length: Math.floor(service.stars) }, (_, index) => (
-              <svg
-                key={index}
-                viewBox="0 0 24 24"
-                className="w-4 h-4 text-black"
-              >
-                <path d="M12 .587l3.668 7.568L24 9.423l-6 5.847 1.417 8.253L12 18.897l-7.417 4.626L6 15.27 0 9.423l8.332-1.268z" />
-              </svg>
-            ))}
-            {service.stars % 1 !== 0 && (
-              <svg viewBox="0 0 24 24" className="w-4 h-4 text-black">
-                <defs>
-                  <linearGradient id="halfStarGradient">
-                    <stop offset="50%" stopColor="black" />
-                    <stop offset="50%" stopColor="gray" stopOpacity="0.3" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M12 .587l3.668 7.568L24 9.423l-6 5.847 1.417 8.253L12 18.897l-7.417 4.626L6 15.27 0 9.423l8.332-1.268z"
-                  fill="url(#halfStarGradient)"
-                />
-              </svg>
-            )}
-            <span className="ml-1 text-gray-600">
-              ({service.stars} estrelas)
+        <div>
+          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
+            {product.supplier}
+          </p>
+          <h1 className="mt-2 font-display text-4xl sm:text-5xl">{product.title}</h1>
+          <p className="mt-3 text-2xl font-semibold">
+            {formatBRL(product.price)}{' '}
+            <span className="text-base font-normal text-muted-foreground">
+              {product.unit}
             </span>
-            <div className="flex items-center">
-              <div className="w-1 h-1 bg-gray-600 rounded-full mx-2"></div>
-              <span className="text-gray-600">{service.reviews} reviews</span>
+          </p>
+          <div className="mt-3">
+            <Rating value={product.rating} reviews={product.reviews} />
+          </div>
+          <p className="mt-5 text-base leading-7 text-muted-foreground">
+            {product.description}
+          </p>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Ocasiões: {product.events.join(', ')}
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <label htmlFor="quantidade" className="text-sm font-medium">
+              Quantidade
+            </label>
+            <div className="inline-flex items-center rounded-full border border-border bg-card">
+              <button
+                type="button"
+                className="h-11 w-11 rounded-full hover:bg-secondary"
+                aria-label="Diminuir quantidade"
+                onClick={() => setQty((value) => Math.max(1, value - 1))}
+              >
+                −
+              </button>
+              <span id="quantidade" className="w-8 text-center font-semibold">
+                {qty}
+              </span>
+              <button
+                type="button"
+                className="h-11 w-11 rounded-full hover:bg-secondary"
+                aria-label="Aumentar quantidade"
+                onClick={() => setQty((value) => value + 1)}
+              >
+                +
+              </button>
             </div>
           </div>
-          <p className="font-normal text-[16px] mt-3">{service.description}</p>
-          <div className="flex flex-col gap-4 mt-20 ">
-            <Button onClick={() => router.push('/cart')}>
-              Adicionar ao Carrinho
+
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+            <Button
+              onClick={() => {
+                addToCart(product.id, qty);
+                setNotice(
+                  `${product.title} adicionado ao carrinho (${qty}).`
+                );
+              }}
+            >
+              Adicionar ao carrinho
             </Button>
             <Button
-              className="bg-white border border-black text-black"
-              onClick={() => (window.location.href = '/saved-items')}
+              variant="outline"
+              aria-pressed={saved}
+              onClick={() => toggleSaved(product.id)}
             >
-              Adicionar à Lista
+              {saved ? 'Salvo na lista' : 'Salvar'}
             </Button>
           </div>
-          <div className="w-full h-[1px] bg-gray-200 my-4"></div>
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="font-bold text-[18px]">
-                Eventos
-              </AccordionTrigger>
-              <AccordionContent>
-                <ul>
-                  {service.events.map((event, index) => (
-                    <li className="font-bold text-[16px] " key={index}>
-                      {' '}
-                      • {event}
-                    </li>
-                  ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          <p className="mt-3 text-sm text-primary" aria-live="polite">
+            {notice}
+          </p>
         </div>
-      </div>
-      <Footer></Footer>
-    </div>
+      </section>
+    </PageShell>
+  );
+}
+
+export default function SingleProductPage() {
+  return (
+    <Suspense
+      fallback={
+        <PageShell>
+          <p className="px-6 py-16 text-muted-foreground">Carregando serviço…</p>
+        </PageShell>
+      }
+    >
+      <ProductContent />
+    </Suspense>
   );
 }

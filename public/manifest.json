@@ -1,6 +1,6 @@
 {
-  "name": "Next.js Boilerplate",
-  "short_name": "Next.js Boilerplate",
+  "name": "Easy Party",
+  "short_name": "Easy Party",
   "icons": [
     {
       "src": "/img/icon-192.png",
@@ -14,7 +14,7 @@
     }
   ],
   "background_color": "#FFFFFF",
-  "description": "Next.js Boilerplate",
+  "description": "Monte sua festa sem complicação.",
   "display": "fullscreen",
   "start_url": "/",
   "theme_color": "#06092B",

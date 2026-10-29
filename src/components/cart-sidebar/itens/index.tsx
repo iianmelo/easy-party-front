@@ -14,7 +14,7 @@ const CartItem: React.FC<CartItemProps> = ({ image, description, price }) => {
       <Image src={image} alt={description} width={104} height={104} />
       
       {/* Descrição e preço */}
-      <div className="flex-1">,
+      <div className="flex-1">
         <p className="text-[16px] font-medium">{description}</p>
         <p className="text-[16px] font-bold">{price}</p>
       </div>

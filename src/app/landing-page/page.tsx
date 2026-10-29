@@ -1,95 +1,85 @@
-'use client';
-
-import { TopBar, Footer, PersonalCard } from 'components';
+import Image from 'next/image';
 import {
   ImgFesta,
-  ImgBalloons,
   VictorProfile,
   IanProfile,
   GuiProfile,
   RafaProfile,
   JoaoProfile
 } from 'assets';
-import Image from 'next/image';
+import PageShell from 'components/page-shell';
+import PersonalCard from 'components/personal-card';
 import CompanySignupForm from 'components/company-form';
 
-export default function Test() {
+const team = [
+  { image: RafaProfile, name: 'Rafael Alves', ocupation: 'Desenvolvedor de Software' },
+  { image: JoaoProfile, name: 'João Fellows', ocupation: 'Desenvolvedor de Software' },
+  { image: GuiProfile, name: 'Guilherme Montenegro', ocupation: 'Desenvolvedor de Software' },
+  { image: VictorProfile, name: 'Victor Mendonça', ocupation: 'Desenvolvedor de Software' },
+  { image: IanProfile, name: 'Ian Melo', ocupation: 'Desenvolvedor de Software' }
+];
+
+export default function LandingPage() {
   return (
-    <div className="w-full h-full">
-      <TopBar></TopBar>
-      <div className="w-full">
-        <Image src={ImgFesta} alt="Imagem de uma festa" className="h-full w-full" />
-      </div>
-      <div className="flex items-center h-full justify-between">
-        <div className="pl-14 flex flex-col gap-6 max-w-[580px] justify-start">
-          <h1 className="text-[56px] font-bold leading-[68px] ">
-            Easy Party
+    <PageShell>
+      <section>
+        <Image
+          src={ImgFesta}
+          alt="Festa com pessoas celebrando"
+          priority
+          className="h-[320px] w-full object-cover sm:h-[420px]"
+        />
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+          <h1 className="font-display text-4xl leading-tight sm:text-5xl">
+            Feito em equipe, para quem organiza a festa.
           </h1>
-          <p className="font-normal text-[18px] leading-[27px] text-left text-justify">
-            Organizar um evento nunca foi tão simples! Na Easy Party, utilizamos inteligência artificial para recomendar os
-            melhores serviços para a sua celebração, garantindo que cada detalhe seja perfeito. Seja um casamento dos sonhos,
-            uma festa de aniversário, um evento corporativo ou qualquer outra ocasião especial, nossa IA analisa suas preferências
-            e sugere fornecedores ideais para buffet, decoração, música, iluminação, entretenimento e muito mais. Com tecnologia
-            avançada e uma curadoria especializada, ajudamos você a criar eventos únicos, cheios de estilo e sofisticação, sem complicações.
-            Deixe a Easy Party tornar sua festa inesquecível com recomendações sob medida para você!
+          <p className="mt-4 text-base leading-7 text-muted-foreground">
+            A Easy Party nasceu na disciplina Empreendimentos em Informática,
+            no CIn-UFPE, entre fevereiro e maio de 2025.
           </p>
         </div>
-        <Image src={ImgBalloons} alt="Logo" className='mr-20' />
-      </div>
-      <div className="flex flex-col py-10 gap-10 w-full bg-[#D53232]">
-        <div className="flex justify-between px-16 py-5 items-center">
-          <div className="flex flex-col gap-4">
-            <p className="font-bold text-[18px] leading-[58px]">
-                Nosso time
-            </p>
-            <h1 className="font-bold text-[48px] leading-[58px]">
-              {' '}
-              Pessoas responsáveis por desenvolver a plataforma
-            </h1>
-            <p className="font-normal text-[18px] leading-[27px]">
-                O nosso time é formado por jovens empreendedores que pensam e colocam em prática
-                soluções para problemas do seu dia a dia.
-            </p>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+        <h2 className="font-display text-3xl sm:text-4xl">O que o produto tenta resolver</h2>
+        <p className="mt-4 text-base leading-8 text-muted-foreground">
+          Organizar um evento junta buffet, espaço, música, decoração e registro.
+          Quem faz isso pela primeira vez pesquisa cada peça num canal diferente.
+          A plataforma concentra essas frentes e deixa a pessoa descrever a festa
+          antes de sair comparando fornecedor por fornecedor.
+        </p>
+      </section>
+
+      <section className="bg-secondary">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+          <h2 className="font-display text-3xl sm:text-4xl">Quem construiu</h2>
+          <p className="mt-2 max-w-2xl text-muted-foreground">
+            O time aparece aqui com o papel que está no produto. O detalhe da
+            contribuição de cada pessoa fica no README, na seção Meu papel.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {team.map((person) => (
+              <PersonalCard
+                key={person.name}
+                image={person.image}
+                name={person.name}
+                ocupation={person.ocupation}
+              />
+            ))}
           </div>
         </div>
-        <div className="flex gap-14 px-8 h-full justify-self-center">
-          <PersonalCard
-            image={RafaProfile}
-            name="Rafael Alves"
-            ocupation="Desenvolvedor de Software" 
-          />
-          <PersonalCard
-            image={JoaoProfile}
-            name="João Fellows"
-            ocupation="Desenvolvedor de Software"
-          />
-          <PersonalCard
-            image={GuiProfile}
-            name="Guilherme Montenegro"
-            ocupation="Desenvolvedor de Software"
-          />
-          <PersonalCard
-            image={VictorProfile}
-            name="Victor Mendonça"
-            ocupation="Desenvolvedor de Software"
-          />
-          <PersonalCard
-            image={IanProfile}
-            name="Ian Melo"
-            ocupation="Desenvolvedor de Software"
-          />
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="font-display text-3xl sm:text-4xl">Cadastre sua empresa</h2>
+          <p className="mt-2 text-muted-foreground">
+            Formulário de demonstração para um fornecedor se apresentar. O envio
+            não sai deste navegador.
+          </p>
         </div>
-      </div>
-      <div>
-        <h1 className="text-[48px] font-bold text-center mt-10">
-          Cadastre sua empresa
-        </h1>
-        <p className="text-[18px] font-normal text-center">
-          Faça parte da nossa plataforma e seja recomendado para diversos eventos
-        </p>
-      </div>
-      <CompanySignupForm></CompanySignupForm>
-      <Footer></Footer>
-    </div>
+        <CompanySignupForm />
+      </section>
+    </PageShell>
   );
 }

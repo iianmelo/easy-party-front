@@ -11,7 +11,7 @@ interface ItemProps {
 }
 
 const ItemCart: React.FC<ItemProps> = ({ image, description, price }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const increment = () => setCount(count + 1);
   const decrement = () => setCount(count > 0 ? count - 1 : 0);
