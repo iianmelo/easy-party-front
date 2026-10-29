@@ -9,39 +9,63 @@ export const nextAuthOptions: NextAuthOptions = {
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: { label: 'Username', type: 'text' },
-        password: { label: 'Password', type: 'password' }
+        username: { label: 'Email', type: 'text' },
+        password: { label: 'Senha', type: 'password' },
+        name: { label: 'Nome', type: 'text' },
+        email: { label: 'Email', type: 'text' },
+        role: { label: 'Papel', type: 'text' }
       },
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      async authorize(credentials, req) {
-        const response = await api.post('/sessions', {
-          username: credentials?.username,
-          password: credentials?.password
-        });
+      async authorize(credentials) {
+        const username = credentials?.username?.trim() ?? '';
+        const password = credentials?.password ?? '';
+        if (!username || !password) return null;
 
-        const { user } = response.data.data;
-
-        if (user) {
-          return user;
+        try {
+          const response = await api.post('/sessions', {
+            username,
+            password
+          });
+          const user = response.data?.data?.user;
+          if (user) {
+            return { ...user, demo: false };
+          }
+        } catch {
+          // API fora do ar: a sessão abaixo é só local e fica marcada como demo.
         }
 
-        return null;
+        return {
+          id: 'demo-user',
+          name: credentials?.name?.trim() || username,
+          email: credentials?.email?.trim() || username,
+          demo: true,
+          role: credentials?.role || 'cliente'
+        };
       }
     })
   ],
   pages: {
-    signIn: '/'
+    signIn: '/login'
   },
   callbacks: {
     async jwt({ token, user }) {
-      user && (token.user = user);
+      if (user) {
+        token.user = {
+          name: user.name,
+          email: user.email,
+          image: user.image,
+          demo: user.demo,
+          role: user.role
+        };
+      }
       return token;
     },
 
     async session({ session, token }) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      session.user = token.user as any;
+      session.user = {
+        ...session.user,
+        ...token.user
+      };
       return session;
     }
   }

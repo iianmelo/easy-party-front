@@ -23,15 +23,15 @@ O MVP mira duas pontas, com foco em Recife e região:
 
 ## Funcionalidades
 
-- **Início** com a proposta do produto e o atalho “Monte sua festa”.
-- **Catálogo** de alimentação, música, decoração e mídia, com busca por nome.
-- **Página de serviço** com fotos, preço, avaliação e ações de carrinho e lista.
-- **Monte sua festa:** a pessoa descreve o evento e recebe sugestões agrupadas (alimentação, áudio, entretenimento, local, ornamentação). Sem a API, a tela usa um catálogo local e avisa que está em modo demonstração.
-- **Carrinho e pagamento** com o fluxo de fechamento (dados de demonstração).
-- **Lista de salvos.**
-- **Login e cadastro** para cliente e fornecedor. A tela está pronta; a sessão real depende da API.
-- **Sobre** com o time e um formulário para a empresa se cadastrar.
-- **Cadastro de serviço** para o fornecedor descrever a oferta.
+- **Início** com proposta, passos, categorias e depoimentos marcados como fictícios.
+- **Catálogo** de alimentação, música, decoração e mídia, com busca, filtro por ocasião e ordenação.
+- **Página de serviço** com fotos, preço, avaliação, quantidade, carrinho e lista.
+- **Monte sua festa:** a pessoa descreve o evento e recebe sugestões agrupadas. Sem a API, a tela usa um catálogo local e avisa que está em modo demonstração.
+- **Carrinho** com quantidade, subtotal, taxa e total calculados neste navegador.
+- **Pagamento** de demonstração, com tela de pedido registrado. Nenhum valor é cobrado.
+- **Salvos**, persistidos no navegador.
+- **Login e cadastro** para cliente e fornecedor. Se a API não responder, entra uma sessão de demonstração, avisada no topo.
+- **Sobre** com o time e um formulário de empresa que não sai do navegador.
 
 ## Capturas
 
@@ -56,25 +56,27 @@ Categoria, página do serviço, carrinho e pagamento.
   <img src="docs/screenshots/produto-desktop.png" alt="Página de um serviço" width="720" />
 </p>
 <p>
-  <img src="docs/screenshots/carrinho-desktop.png" alt="Carrinho" width="720" />
-  <img src="docs/screenshots/pagamento-desktop.png" alt="Pagamento" width="720" />
+  <img src="docs/screenshots/carrinho-desktop.png" alt="Carrinho com totais" width="720" />
+  <img src="docs/screenshots/pagamento-sucesso-desktop.png" alt="Pedido de demonstração confirmado" width="720" />
 </p>
 
-Login, sobre o produto, time e lista de salvos.
+Login em modo demonstração, sessão avisada no topo, sobre o projeto e a lista de salvos.
 
 <p>
-  <img src="docs/screenshots/login-desktop.png" alt="Login de cliente" width="720" />
+  <img src="docs/screenshots/login-desktop.png" alt="Login com aviso de demonstração" width="720" />
+  <img src="docs/screenshots/sessao-demo-desktop.png" alt="Home com sessão de demonstração" width="720" />
+</p>
+<p>
   <img src="docs/screenshots/sobre-desktop.png" alt="Página Sobre" width="720" />
-</p>
-<p>
-  <img src="docs/screenshots/sobre-time-desktop.png" alt="Time da Easy Party" width="720" />
   <img src="docs/screenshots/salvos-desktop.png" alt="Lista de itens salvos" width="720" />
 </p>
 
-Celular (página inicial).
+Celular: início, catálogo e carrinho.
 
 <p>
-  <img src="docs/screenshots/home-mobile.png" alt="Página inicial no celular" width="280" />
+  <img src="docs/screenshots/home-mobile.png" alt="Página inicial no celular" width="240" />
+  <img src="docs/screenshots/servicos-mobile.png" alt="Serviços no celular" width="240" />
+  <img src="docs/screenshots/carrinho-mobile.png" alt="Carrinho no celular" width="240" />
 </p>
 
 ## Stack
@@ -86,7 +88,7 @@ Celular (página inicial).
 | Estilo | Tailwind CSS e componentes no estilo shadcn/ui (Radix) |
 | Formulários | React Hook Form e Zod |
 | HTTP | Axios |
-| Sessão | NextAuth (Credentials), quando a API de login responde |
+| Sessão | NextAuth (Credentials). Sem a API, a sessão é local e marcada como demonstração |
 | Testes | Jest e Testing Library (esqueleto do boilerplate) |
 
 ## Como rodar
@@ -111,7 +113,7 @@ Variáveis em `.env` (há valores de exemplo em `.env.example`):
 | `NEXTAUTH_SECRET` | Segredo do NextAuth. Se faltar, o modo local usa um segredo de demonstração. |
 | `NEXT_PUBLIC_API_URL` | Base da API. Padrão: `http://localhost:5000`. |
 
-A recomendação chama `POST /getData`. O login chama `POST /sessions`. Se essa API não estiver no ar, “Monte sua festa” continua demonstrável com o catálogo em `src/services/getServices.ts`. Carrinho, pagamento e lista de salvos não dependem dela.
+A recomendação chama `POST /getData`. O login chama `POST /sessions`. Se essa API não estiver no ar, “Monte sua festa” usa o catálogo em `src/services/getServices.ts` e o login entra em modo demonstração. Carrinho e salvos ficam no `localStorage`.
 
 Outros comandos:
 
@@ -126,7 +128,9 @@ yarn start
 
 ```text
 src/app/            rotas (início, serviços, festa, carrinho, pagamento, login)
-src/components/     barra, cards, carrinho, formulários
+src/components/     barra, cards, páginas de catálogo
+src/data/catalog.ts serviços, preços e categorias
+src/providers/      carrinho, salvos e sessão
 src/services/       cliente HTTP e recomendação, com catálogo local
 src/assets/         imagens do produto
 docs/screenshots/   capturas usadas neste README
@@ -165,6 +169,7 @@ Não há deploy público neste repositório. O workflow `.github/workflows/deplo
 
 ## Limites do MVP
 
-- Login e cadastro não autenticam sem a API. As telas seguintes (carrinho, salvos, catálogo) abrem direto, para a demonstração.
-- Carrinho e pagamento usam itens fixos. A quantidade no carrinho começa em 1 e os totais da lateral não acompanham o contador.
-- As páginas de música e mídia reaproveitam imagens que já estavam no repositório. As artes originais dessas categorias não foram commitadas.
+- Sem a API, login e cadastro criam uma sessão só neste navegador. O topo avisa que é demonstração.
+- O pagamento não cobra nada. A confirmação fica na aba, em `sessionStorage`.
+- Parte das fotos de música, decoração e mídia reaproveita imagens que já estavam no repositório.
+- Os depoimentos da home são fictícios e estão rotulados assim. Não são métricas do projeto.

@@ -34,19 +34,31 @@ const PersonalCard: React.FC<PersonalCardProps> = ({
   const instaLink = instaLinks[name] || '#';
 
   return (
-    <div className="items-start flex flex-col justify-between w-full pl-6 pr-6">
-      <Image src={image} alt={name} height={110} width={110} className='rounded-full' />
-      <h1 className="font-semibold text-lg leading-7">{name}</h1>
-      <p className="font-normal text-sm leading-6">{ocupation}</p>
-      <div className="flex gap-3 item-center justify-center mt-2">
-        <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
-          <Linkedin></Linkedin>
+    <article className="rounded-3xl bg-card p-5 shadow-card">
+      <Image src={image} alt="" height={80} width={80} className="h-20 w-20 rounded-full object-cover" />
+      <h3 className="mt-3 font-semibold leading-6">{name}</h3>
+      <p className="text-sm leading-6 text-muted-foreground">{ocupation}</p>
+      <div className="mt-3 flex gap-2">
+        <a
+          href={linkedinLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`LinkedIn de ${name}`}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border hover:bg-secondary"
+        >
+          <Linkedin className="h-4 w-4" />
         </a>
-        <a href={instaLink} target="_blank" rel="noopener noreferrer">
-          <Instagram></Instagram>
-        </a>  
+        <a
+          href={instaLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Instagram de ${name}`}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border hover:bg-secondary"
+        >
+          <Instagram className="h-4 w-4" />
+        </a>
       </div>
-    </div>
+    </article>
   );
 };
 

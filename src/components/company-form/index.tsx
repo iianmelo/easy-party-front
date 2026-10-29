@@ -13,6 +13,7 @@ export default function CompanySignupForm() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,12 +22,16 @@ export default function CompanySignupForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSent(false);
     console.log('Dados enviados:', formData);
-    setTimeout(() => setIsSubmitting(false), 1000); // Simula envio de dados
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSent(true);
+    }, 600);
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-4 border rounded-lg shadow-md">
+    <div className="mx-auto mt-8 max-w-md rounded-3xl border border-border bg-card p-6 shadow-card">
       <h2 className="text-xl font-bold mb-4">Cadastro de Empresa</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -66,9 +71,14 @@ export default function CompanySignupForm() {
           <input type="text" name="location" value={formData.location} onChange={handleChange} className="w-full border p-2 rounded" />
         </div>
 
-        <button type="submit" disabled={isSubmitting} className="w-full bg-[#d53232] hover:bg-red-500 text-white p-2 rounded">
-          {isSubmitting ? 'Enviando...' : 'Cadastrar'}
+        <button type="submit" disabled={isSubmitting} className="h-11 w-full rounded-full bg-primary font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60">
+          {isSubmitting ? 'Enviando…' : 'Cadastrar em demonstração'}
         </button>
+        {sent && (
+          <p className="text-sm text-muted-foreground" role="status">
+            Recebido só nesta tela. Nenhum dado foi enviado a um servidor.
+          </p>
+        )}
       </form>
     </div>
   );
