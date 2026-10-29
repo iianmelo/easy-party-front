@@ -26,6 +26,7 @@ O MVP mira duas pontas, com foco em Recife e região:
 - **Início** com proposta, passos, categorias e depoimentos marcados como fictícios.
 - **Catálogo** de alimentação, música, decoração e mídia, com busca, filtro por ocasião e ordenação.
 - **Página de serviço** com fotos, preço, avaliação, quantidade, carrinho e lista.
+- **Assistente de festa (Planeje com IA):** conversa para juntar tipo, data, horário, público, tamanho, idade, local, orçamento e estilo. Em seguida recomenda serviços do catálogo, com motivo, total estimado contra o orçamento, carrinho e salvos. Sem chave de modelo, um motor local em português conduz o fluxo e a tela avisa que é modo demonstração.
 - **Monte sua festa:** a pessoa descreve o evento e recebe sugestões agrupadas. Sem a API, a tela usa um catálogo local e avisa que está em modo demonstração.
 - **Carrinho** com quantidade, subtotal, taxa e total calculados neste navegador.
 - **Pagamento** de demonstração, com tela de pedido registrado. Nenhum valor é cobrado.
@@ -40,6 +41,13 @@ Página inicial e catálogo.
 <p>
   <img src="docs/screenshots/home-desktop.png" alt="Página inicial da Easy Party" width="720" />
   <img src="docs/screenshots/servicos-desktop.png" alt="Catálogo de serviços" width="720" />
+</p>
+
+Assistente em conversa (modo demonstração, sem chave de modelo) e a busca direta.
+
+<p>
+  <img src="docs/screenshots/assistente-desktop.png" alt="Assistente de festa no desktop, com recomendações" width="720" />
+  <img src="docs/screenshots/assistente-mobile.png" alt="Assistente de festa no celular" width="240" />
 </p>
 
 Descrever a festa e ver sugestões. Sem a API de recomendação, o resultado vem do catálogo local.
@@ -113,7 +121,19 @@ Variáveis em `.env` (há valores de exemplo em `.env.example`):
 | `NEXTAUTH_SECRET` | Segredo do NextAuth. Se faltar, o modo local usa um segredo de demonstração. |
 | `NEXT_PUBLIC_API_URL` | Base da API. Padrão: `http://localhost:5000`. |
 
-A recomendação chama `POST /getData`. O login chama `POST /sessions`. Se essa API não estiver no ar, “Monte sua festa” usa o catálogo em `src/services/getServices.ts` e o login entra em modo demonstração. Carrinho e salvos ficam no `localStorage`.
+A recomendação de “Monte sua festa” chama `POST /getData`. O login chama `POST /sessions`. Se essa API não estiver no ar, “Monte sua festa” usa o catálogo em `src/services/getServices.ts` e o login entra em modo demonstração. Carrinho e salvos ficam no `localStorage`.
+
+### Assistente com um modelo de verdade
+
+O chat em `/assistente` chama `POST /api/assistant`. Sem `OPENAI_API_KEY`, a rota usa o motor local e a página mostra **modo demonstração**. Com a chave, a rota fala com uma API compatível com OpenAI (ferramenta `atualizar_plano`, saída em JSON) e o servidor recalcula os preços pelo catálogo. A chave não vai para o browser.
+
+```bash
+OPENAI_API_KEY=sk-...
+OPENAI_BASE_URL=https://api.openai.com/v1   # opcional
+OPENAI_MODEL=gpt-4o-mini                     # opcional
+```
+
+Se a chamada ao modelo falhar, o mesmo fluxo cai de volta no motor local.
 
 Outros comandos:
 

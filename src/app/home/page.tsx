@@ -60,11 +60,14 @@ export default function Home() {
             abrir dez conversas. A Easy Party organiza as opções para você
             decidir com calma.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button size="lg" asChild>
-              <Link href="/create-party">Monte sua festa</Link>
+              <Link href="/assistente">Planeje com IA</Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
+              <Link href="/create-party">Monte sua festa</Link>
+            </Button>
+            <Button size="lg" variant="ghost" asChild>
               <Link href="/servicos">Explorar serviços</Link>
             </Button>
           </div>

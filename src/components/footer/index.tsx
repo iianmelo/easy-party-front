@@ -22,6 +22,11 @@ const Footer = () => {
               </Link>
             </li>
             <li>
+              <Link className="hover:text-primary" href="/assistente">
+                Assistente de festa
+              </Link>
+            </li>
+            <li>
               <Link className="hover:text-primary" href="/create-party">
                 Monte sua festa
               </Link>

@@ -14,6 +14,7 @@ import { cn } from 'lib/utils';
 const links = [
   { href: '/', label: 'Início' },
   { href: '/servicos', label: 'Serviços' },
+  { href: '/assistente', label: 'Assistente' },
   { href: '/create-party', label: 'Monte sua festa' },
   { href: '/landing-page', label: 'Sobre' }
 ];
