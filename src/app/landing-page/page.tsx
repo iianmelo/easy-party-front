@@ -54,8 +54,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
           <h2 className="font-display text-3xl sm:text-4xl">Quem construiu</h2>
           <p className="mt-2 max-w-2xl text-muted-foreground">
-            O time aparece aqui com o papel que está no produto. O detalhe da
-            contribuição de cada pessoa fica no README, na seção Meu papel.
+            O time aparece aqui com o papel que está no produto.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
             {team.map((person) => (
