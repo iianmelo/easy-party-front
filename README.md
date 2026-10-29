@@ -175,7 +175,7 @@ docs/screenshots/         capturas deste README
 
 ## Time e contexto
 
-Trabalho em equipe na disciplina Empreendimentos em Informática, CIn-UFPE, de fevereiro a maio de 2025. Ian Medeiros Melo cursa Engenharia da Computação no CIn-UFPE e está em transição para PMO e gestão de projetos.
+Trabalho em equipe na disciplina Empreendimentos em Informática, CIn-UFPE, de fevereiro a maio de 2025.
 
 Na página Sobre, o time aparece assim:
 
@@ -186,8 +186,6 @@ Na página Sobre, o time aparece assim:
 | Guilherme Montenegro | Desenvolvedor de Software |
 | Victor Mendonça | Desenvolvedor de Software |
 | Ian Melo | Desenvolvedor de Software |
-
-Os nomes e o papel de cada card são os que estão na aplicação. Links de LinkedIn e Instagram saem desses cards.
 
 ## Meu papel
 
