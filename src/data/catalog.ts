@@ -1,30 +1,23 @@
 import type { StaticImageData } from 'next/image';
-import {
-  Alimentacao,
-  Musica,
-  Musica2,
-  Decoracao,
-  Midia,
-  MidiaCard,
-  BuffetCard,
-  BuffetCard2,
-  BuffetCard3,
-  BuffetCard4,
-  BuffetCart2,
-  DoceCard,
-  DoceCard2,
-  SalgadoCard,
-  SalgadoCard2,
-  BarmanCard,
-  BarmanCard2,
-  HeinekenCard,
-  DJCard,
-  PlayCard,
-  PhotoCard,
-  ImgBalloons,
-  PartyHome,
-  ImgFesta
-} from 'assets';
+import buffet from '../assets/catalog/buffet.webp';
+import buffetTabua from '../assets/catalog/buffet-tabua.webp';
+import buffetPremium from '../assets/catalog/buffet-premium.webp';
+import sobremesa from '../assets/catalog/sobremesa.webp';
+import doces from '../assets/catalog/doces.webp';
+import docesCupcake from '../assets/catalog/doces-cupcake.webp';
+import salgados from '../assets/catalog/salgados.webp';
+import barman from '../assets/catalog/barman.webp';
+import cerveja from '../assets/catalog/cerveja.webp';
+import dj from '../assets/catalog/dj.webp';
+import banda from '../assets/catalog/banda.webp';
+import ambiente from '../assets/catalog/ambiente.webp';
+import karaoke from '../assets/catalog/karaoke.webp';
+import flores from '../assets/catalog/flores.webp';
+import baloes from '../assets/catalog/baloes.webp';
+import salao from '../assets/catalog/salao.webp';
+import foto from '../assets/catalog/foto.webp';
+import video from '../assets/catalog/video.webp';
+import social from '../assets/catalog/social.webp';
 import { normalizeText } from 'lib/format';
 
 export type CategoryId = 'alimentacao' | 'musica' | 'decoracao' | 'midia';
@@ -59,28 +52,28 @@ export const categories: Category[] = [
     id: 'alimentacao',
     label: 'Alimentação',
     href: '/subcategoria-alimentacao',
-    image: Alimentacao,
+    image: buffet,
     blurb: 'Buffet, doces, salgados e bar para o tamanho da sua mesa.'
   },
   {
     id: 'musica',
     label: 'Música',
     href: '/subcategoria-musica',
-    image: Musica,
+    image: dj,
     blurb: 'DJ, banda e som ambiente com equipamento incluso.'
   },
   {
     id: 'decoracao',
     label: 'Decoração',
     href: '/subcategoria-decoracao',
-    image: Decoracao,
+    image: salao,
     blurb: 'Flores, balões e ambientação no tom da festa.'
   },
   {
     id: 'midia',
     label: 'Mídia',
     href: '/subcategoria-midia',
-    image: Midia,
+    image: foto,
     blurb: 'Foto e filme para guardar a noite inteira.'
   }
 ];
@@ -98,8 +91,8 @@ export const products: Product[] = [
     unit: 'por pessoa',
     rating: 4.7,
     reviews: 32,
-    image: BuffetCard,
-    gallery: [BuffetCard, BuffetCard2, BuffetCard3, BuffetCard4],
+    image: buffet,
+    gallery: [buffet, buffetTabua, salgados],
     tags: ['Aniversário', 'Corporativo'],
     events: ['Aniversário', 'Corporativo', 'Confraternização']
   },
@@ -115,8 +108,8 @@ export const products: Product[] = [
     unit: 'por pessoa',
     rating: 4.9,
     reviews: 18,
-    image: BuffetCart2,
-    gallery: [BuffetCart2, BuffetCard3, BuffetCard2],
+    image: buffetPremium,
+    gallery: [buffetPremium, sobremesa],
     tags: ['Casamento'],
     events: ['Casamento', 'Aniversário']
   },
@@ -132,8 +125,8 @@ export const products: Product[] = [
     unit: 'o combo',
     rating: 4.6,
     reviews: 21,
-    image: DoceCard,
-    gallery: [DoceCard, DoceCard2],
+    image: doces,
+    gallery: [doces, docesCupcake],
     tags: ['Aniversário', 'Infantil'],
     events: ['Aniversário', 'Infantil']
   },
@@ -149,8 +142,8 @@ export const products: Product[] = [
     unit: 'o combo',
     rating: 4.5,
     reviews: 27,
-    image: SalgadoCard,
-    gallery: [SalgadoCard, SalgadoCard2],
+    image: salgados,
+    gallery: [salgados, buffetTabua],
     tags: ['Aniversário', 'Corporativo'],
     events: ['Aniversário', 'Corporativo']
   },
@@ -166,25 +159,25 @@ export const products: Product[] = [
     unit: 'por 4 horas',
     rating: 4.8,
     reviews: 14,
-    image: BarmanCard,
-    gallery: [BarmanCard, HeinekenCard],
+    image: barman,
+    gallery: [barman],
     tags: ['Aniversário', 'Casamento'],
     events: ['Aniversário', 'Casamento']
   },
   {
     id: 'caixas-heineken',
-    title: 'Caixas Heineken',
+    title: 'Cerveja gelada',
     category: 'alimentacao',
     categoryLabel: 'Alimentação',
     supplier: 'Gelada Recife',
     description:
-      'Caixa gelada para deixar na mesa ou no bar. Combina com o serviço de barman ou com um evento mais solto.',
+      'Cerveja servida gelada para a mesa ou para o bar. Combina com o serviço de barman ou com um evento mais solto.',
     price: 49.9,
-    unit: 'a caixa',
+    unit: 'o copo',
     rating: 4.4,
     reviews: 11,
-    image: HeinekenCard,
-    gallery: [HeinekenCard, BarmanCard2],
+    image: cerveja,
+    gallery: [cerveja],
     tags: ['Aniversário'],
     events: ['Aniversário', 'Confraternização']
   },
@@ -200,8 +193,8 @@ export const products: Product[] = [
     unit: 'a noite',
     rating: 4.8,
     reviews: 19,
-    image: DJCard,
-    gallery: [DJCard, Musica2],
+    image: dj,
+    gallery: [dj],
     tags: ['Aniversário', 'Casamento'],
     events: ['Aniversário', 'Casamento', 'Corporativo']
   },
@@ -217,8 +210,8 @@ export const products: Product[] = [
     unit: 'o set',
     rating: 4.9,
     reviews: 9,
-    image: Musica,
-    gallery: [Musica, Musica2],
+    image: banda,
+    gallery: [banda],
     tags: ['Casamento'],
     events: ['Casamento', 'Aniversário']
   },
@@ -234,8 +227,8 @@ export const products: Product[] = [
     unit: 'a festa',
     rating: 4.5,
     reviews: 8,
-    image: Musica2,
-    gallery: [Musica2, DJCard],
+    image: ambiente,
+    gallery: [ambiente],
     tags: ['Corporativo', 'Casamento'],
     events: ['Corporativo', 'Casamento']
   },
@@ -251,8 +244,8 @@ export const products: Product[] = [
     unit: 'por 4 horas',
     rating: 4.6,
     reviews: 12,
-    image: PlayCard,
-    gallery: [PlayCard, DJCard],
+    image: karaoke,
+    gallery: [karaoke],
     tags: ['Aniversário', 'Infantil'],
     events: ['Aniversário', 'Infantil']
   },
@@ -268,8 +261,8 @@ export const products: Product[] = [
     unit: 'o projeto',
     rating: 4.7,
     reviews: 16,
-    image: Decoracao,
-    gallery: [Decoracao, ImgBalloons],
+    image: flores,
+    gallery: [flores, salao],
     tags: ['Casamento', 'Aniversário'],
     events: ['Casamento', 'Aniversário']
   },
@@ -285,8 +278,8 @@ export const products: Product[] = [
     unit: 'o conjunto',
     rating: 4.6,
     reviews: 22,
-    image: ImgBalloons,
-    gallery: [ImgBalloons, Decoracao],
+    image: baloes,
+    gallery: [baloes],
     tags: ['Infantil', 'Aniversário'],
     events: ['Aniversário', 'Infantil']
   },
@@ -302,8 +295,8 @@ export const products: Product[] = [
     unit: 'o projeto',
     rating: 4.8,
     reviews: 7,
-    image: PartyHome,
-    gallery: [PartyHome, Decoracao, ImgBalloons],
+    image: salao,
+    gallery: [salao, flores, baloes],
     tags: ['Casamento', 'Corporativo'],
     events: ['Casamento', 'Corporativo']
   },
@@ -319,8 +312,8 @@ export const products: Product[] = [
     unit: 'a cobertura',
     rating: 4.9,
     reviews: 24,
-    image: PhotoCard,
-    gallery: [PhotoCard, ImgFesta],
+    image: foto,
+    gallery: [foto],
     tags: ['Casamento', 'Aniversário'],
     events: ['Casamento', 'Aniversário', 'Corporativo']
   },
@@ -336,8 +329,8 @@ export const products: Product[] = [
     unit: 'o filme',
     rating: 4.7,
     reviews: 10,
-    image: Midia,
-    gallery: [Midia, PhotoCard],
+    image: video,
+    gallery: [video],
     tags: ['Casamento'],
     events: ['Casamento', 'Aniversário']
   },
@@ -353,8 +346,8 @@ export const products: Product[] = [
     unit: 'o pacote',
     rating: 4.4,
     reviews: 13,
-    image: ImgFesta,
-    gallery: [ImgFesta, MidiaCard, PhotoCard],
+    image: social,
+    gallery: [social],
     tags: ['Aniversário', 'Corporativo'],
     events: ['Aniversário', 'Corporativo']
   }

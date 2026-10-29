@@ -211,6 +211,7 @@ Não invente métrica, prazo ou cargo.
 
 ## Links
 
+- Fotos do catálogo: [créditos e licenças](docs/image-credits.md)
 - Repositório: [github.com/iianmelo/easy-party-front](https://github.com/iianmelo/easy-party-front)
 - LinkedIn: [Ian Melo](https://www.linkedin.com/in/ian-melo-2340312a8/)
 - Aplicação local: [localhost:3000](http://localhost:3000) e [assistente](http://localhost:3000/assistente)

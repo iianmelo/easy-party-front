@@ -1,14 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Image, { type StaticImageData } from 'next/image';
-import {
-  BuffetCard,
-  DJCard,
-  Decoracao,
-  ImgFesta,
-  PhotoCard
-} from 'assets';
+import Image from 'next/image';
+import { getProduct } from 'data/catalog';
 import PageShell from 'components/page-shell';
 import { Button } from 'components/ui/button';
 import { getServices } from 'services/getServices';
@@ -59,12 +53,18 @@ function matches(service: Service, category: (typeof groups)[number]) {
   return list.includes('Decoração') || list.includes('Lembrancinhas');
 }
 
-function artFor(category: (typeof groups)[number]): StaticImageData {
-  if (category === 'Alimentação') return BuffetCard;
-  if (category === 'Áudio Visual') return DJCard;
-  if (category === 'Entretenimento') return PhotoCard;
-  if (category === 'Local') return ImgFesta;
-  return Decoracao;
+function artFor(category: (typeof groups)[number]) {
+  const id =
+    category === 'Alimentação'
+      ? 'buffet-festas'
+      : category === 'Áudio Visual'
+        ? 'dj-profissional'
+        : category === 'Entretenimento'
+          ? 'fotografia'
+          : category === 'Local'
+            ? 'ambientacao'
+            : 'decoracao-classica';
+  return getProduct(id)!.image;
 }
 
 export default function CreateParty() {
