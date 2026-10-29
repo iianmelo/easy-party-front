@@ -27,7 +27,6 @@ MVP de uma plataforma para organizar festas em Recife e região: catálogo de bu
 - [Como rodar](#como-rodar)
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Time e contexto](#time-e-contexto)
-- [Meu papel](#meu-papel)
 - [Próximos passos](#próximos-passos)
 - [Links](#links)
 
@@ -186,18 +185,6 @@ Na página Sobre, o time aparece assim:
 | Guilherme Montenegro | Desenvolvedor de Software |
 | Victor Mendonça | Desenvolvedor de Software |
 | Ian Melo | Desenvolvedor de Software |
-
-## Meu papel
-
-> **Ian, esta seção é sua.** O restante do README não descreve a sua contribuição individual.
-
-Escreva só o que você fez de fato:
-
-- o que construiu, integrou ou organizou;
-- uma decisão de produto ou de processo que tenha sido sua;
-- um resultado concreto, se houver.
-
-Não invente métrica, prazo ou cargo.
 
 ## Próximos passos
 
