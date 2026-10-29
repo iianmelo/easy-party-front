@@ -4,6 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import api from 'services/api';
 
 export const nextAuthOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET || 'easy-party-local-demo',
   providers: [
     CredentialsProvider({
       name: 'Credentials',

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { TopBar, Footer } from 'components';
 import { BuffetCard, BuffetCard2, BuffetCard3, BuffetCard4 } from 'assets';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { Button } from 'components/ui/button';
 import {
   Accordion,
@@ -27,7 +27,7 @@ interface Service {
   price: string;
   stars: number;
   reviews: number;
-  images: string[];
+  images: StaticImageData[];
   description: string;
   events: string[];
 }

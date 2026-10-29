@@ -4,22 +4,21 @@ import { useState } from 'react';
 import { TopBarLogged, Footer } from 'components';
 import { Button } from 'components/ui/button';
 import { ServiceCard } from 'components';
-import {
-  PhotoCard,
-  VideoCard,
-  DroneCard,
-  EdicaoCard,
-  StreamingCard,
-  MidiaSocialCard,
-  AlbumCard,
-  BannerCard
-} from 'assets';
+import { PhotoCard, Midia, MidiaCard } from 'assets';
+import type { StaticImageData } from 'next/image';
+
+interface CatalogService {
+  image: StaticImageData;
+  title: string;
+  description: string;
+  price: string;
+}
 
 export default function MidiaPage() {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Estrutura de dados para os serviços agrupados por categoria
-  const categories = {
+  const categories: Record<string, CatalogService[]> = {
     'Fotografia e Filmagem': [
       {
         image: PhotoCard,
@@ -28,13 +27,13 @@ export default function MidiaPage() {
         price: 'R$1.500,00'
       },
       {
-        image: VideoCard,
+        image: Midia,
         title: 'Filmagem de Eventos',
         description: 'Vídeos profissionais para registrar momentos',
         price: 'R$2.500,00'
       },
       {
-        image: DroneCard,
+        image: MidiaCard,
         title: 'Filmagem com Drone',
         description: 'Imagens aéreas incríveis para seu evento',
         price: 'R$3.000,00'
@@ -42,13 +41,13 @@ export default function MidiaPage() {
     ],
     'Edição e Pós-Produção': [
       {
-        image: EdicaoCard,
+        image: PhotoCard,
         title: 'Edição de Vídeos',
         description: 'Edição profissional para vídeos de eventos',
         price: 'R$800,00'
       },
       {
-        image: AlbumCard,
+        image: PhotoCard,
         title: 'Álbum Fotográfico',
         description: 'Álbuns personalizados com fotos do evento',
         price: 'R$1.200,00'
@@ -56,19 +55,19 @@ export default function MidiaPage() {
     ],
     'Streaming e Mídia Social': [
       {
-        image: StreamingCard,
+        image: Midia,
         title: 'Streaming ao Vivo',
         description: 'Transmissão ao vivo do seu evento',
         price: 'R$2.000,00'
       },
       {
-        image: MidiaSocialCard,
+        image: MidiaCard,
         title: 'Gerenciamento de Mídias Sociais',
         description: 'Postagens e cobertura do evento em redes sociais',
         price: 'R$1.500,00'
       },
       {
-        image: BannerCard,
+        image: Midia,
         title: 'Criação de Banners',
         description: 'Banners digitais e impressos para divulgação',
         price: 'R$500,00'
@@ -77,7 +76,7 @@ export default function MidiaPage() {
   };
 
   // Função para filtrar os serviços de uma categoria com base no termo de pesquisa
-  const filterServices = (services) =>
+  const filterServices = (services: CatalogService[]) =>
     services.filter((service) =>
       service.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -140,8 +139,8 @@ export default function MidiaPage() {
                   </div>
                 ) : (
                   <p className="text-center text-gray-500">
-                    Nenhum serviço encontrado para "{searchTerm}" na categoria{' '}
-                    {categoryName}.
+                    Nenhum serviço encontrado para &quot;{searchTerm}&quot; na
+                    categoria {categoryName}.
                   </p>
                 )}
               </div>

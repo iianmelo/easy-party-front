@@ -16,12 +16,20 @@ import {
   BarmanCard3,
   HeinekenCard
 } from 'assets';
+import type { StaticImageData } from 'next/image';
+
+interface CatalogService {
+  image: StaticImageData;
+  title: string;
+  description: string;
+  price: string;
+}
 
 export default function Servicos() {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Estrutura de dados para os serviços agrupados por categoria
-  const categories = {
+  const categories: Record<string, CatalogService[]> = {
     'Doces e Salgados': [
       {
         image: SalgadoCard,
@@ -91,7 +99,7 @@ export default function Servicos() {
   };
 
   // Função para filtrar os serviços de uma categoria com base no termo de pesquisa
-  const filterServices = (services) =>
+  const filterServices = (services: CatalogService[]) =>
     services.filter((service) =>
       service.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -161,8 +169,8 @@ export default function Servicos() {
                   </div>
                 ) : (
                   <p className="text-center text-gray-500">
-                    Nenhum serviço encontrado para "{searchTerm}" na categoria{' '}
-                    {categoryName}.
+                    Nenhum serviço encontrado para &quot;{searchTerm}&quot; na
+                    categoria {categoryName}.
                   </p>
                 )}
               </div>

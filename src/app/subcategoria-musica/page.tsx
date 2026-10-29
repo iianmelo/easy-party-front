@@ -4,22 +4,21 @@ import { useState } from 'react';
 import { TopBarLogged, Footer } from 'components';
 import { Button } from 'components/ui/button';
 import { ServiceCard } from 'components';
-import {
-  DJCard,
-  BandaCard,
-  InstrumentoCard,
-  KaraokeCard,
-  Musica,
-  Musica2,
-  Iluminacao,
-  PalcoCard
-} from 'assets';
+import { DJCard, PlayCard, Musica, Musica2, Midia } from 'assets';
+import type { StaticImageData } from 'next/image';
+
+interface CatalogService {
+  image: StaticImageData;
+  title: string;
+  description: string;
+  price: string;
+}
 
 export default function MusicaPage() {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Estrutura de dados para os serviços agrupados por categoria
-  const categories = {
+  const categories: Record<string, CatalogService[]> = {
     'DJs e Bandas': [
       {
         image: DJCard,
@@ -28,7 +27,7 @@ export default function MusicaPage() {
         price: 'R$1.500,00'
       },
       {
-        image: BandaCard,
+        image: Musica,
         title: 'Banda ao Vivo',
         description: 'Música ao vivo para eventos',
         price: 'R$3.000,00'
@@ -36,19 +35,19 @@ export default function MusicaPage() {
     ],
     'Instrumentos e Equipamentos': [
       {
-        image: InstrumentoCard,
+        image: Musica2,
         title: 'Aluguel de Instrumentos',
         description: 'Instrumentos musicais para eventos',
         price: 'R$800,00'
       },
       {
-        image: Iluminacao,
+        image: Midia,
         title: 'Iluminação de Palco',
         description: 'Iluminação especial para shows',
         price: 'R$1.200,00'
       },
       {
-        image: PalcoCard,
+        image: PlayCard,
         title: 'Palco Completo',
         description: 'Estrutura de palco para eventos',
         price: 'R$5.000,00'
@@ -56,7 +55,7 @@ export default function MusicaPage() {
     ],
     'Karaokê e Música Ambiente': [
       {
-        image: KaraokeCard,
+        image: PlayCard,
         title: 'Karaokê',
         description: 'Diversão garantida com karaokê',
         price: 'R$1.000,00'
@@ -77,7 +76,7 @@ export default function MusicaPage() {
   };
 
   // Função para filtrar os serviços de uma categoria com base no termo de pesquisa
-  const filterServices = (services) =>
+  const filterServices = (services: CatalogService[]) =>
     services.filter((service) =>
       service.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -139,8 +138,8 @@ export default function MusicaPage() {
                   </div>
                 ) : (
                   <p className="text-center text-gray-500">
-                    Nenhum serviço encontrado para "{searchTerm}" na categoria{' '}
-                    {categoryName}.
+                    Nenhum serviço encontrado para &quot;{searchTerm}&quot; na
+                    categoria {categoryName}.
                   </p>
                 )}
               </div>

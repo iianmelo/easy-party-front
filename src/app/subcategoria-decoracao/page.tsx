@@ -7,12 +7,20 @@ import { ServiceCard } from 'components';
 import {
   Decoracao
 } from 'assets';
+import type { StaticImageData } from 'next/image';
+
+interface CatalogService {
+  image: StaticImageData;
+  title: string;
+  description: string;
+  price: string;
+}
 
 export default function DecoracaoPage() {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Estrutura de dados para os serviços agrupados por categoria
-  const categories = {
+  const categories: Record<string, CatalogService[]> = {
     'Decoração de Salão': [
       { image: Decoracao, title: 'Decoração Clássica', description: 'Decoração com tons neutros e elegantes', price: 'R$1.500,00' },
       { image: Decoracao, title: 'Decoração Temática', description: 'Decoração personalizada para eventos temáticos', price: 'R$2.000,00' },
@@ -30,7 +38,7 @@ export default function DecoracaoPage() {
   };
 
   // Função para filtrar os serviços de uma categoria com base no termo de pesquisa
-  const filterServices = (services) =>
+  const filterServices = (services: CatalogService[]) =>
     services.filter((service) =>
       service.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -94,7 +102,7 @@ export default function DecoracaoPage() {
                   </div>
                 ) : (
                   <p className="text-center text-gray-500">
-                    Nenhum serviço encontrado para "{searchTerm}" na categoria {categoryName}.
+                    Nenhum serviço encontrado para &quot;{searchTerm}&quot; na categoria {categoryName}.
                   </p>
                 )}
               </div>

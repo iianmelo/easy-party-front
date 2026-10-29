@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { TopBar, Footer } from 'components';
 import { Alimentacao, Decoracao, Midia, Musica, Musica2 } from 'assets';
 import Image from 'next/image';

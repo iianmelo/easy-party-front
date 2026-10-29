@@ -5,8 +5,9 @@ import { ThemeProvider } from '../components/theme-provider';
 import 'styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Next.js Boilerplate',
-  description: 'A simple boilerplate for next.js',
+  title: 'Easy Party',
+  description:
+    'Monte sua festa sem complicação. Encontre buffet, decoração, música e mais.',
   manifest: '/manifest.json'
 };
 
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="pt-BR">
       <body>
         <NextAuthSessionProvider>
           <ThemeProvider

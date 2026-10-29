@@ -7,18 +7,18 @@ import { Bookmark, ShoppingCart } from 'lucide-react';
 
 const TopBarLogged: React.FC = () => {
   return (
-    <div className="bg-[#d53232] items-center flex justify-between h-24 w-full pl-6 pr-6">
+    <div className="relative flex min-h-24 w-full flex-wrap items-center justify-between gap-3 bg-[#d53232] px-4 py-3 md:px-6">
       <div
         className="flex cursor-pointer"
         onClick={() => (window.location.href = '/')}
       >
         <Image src={PartyLogo} alt="Logo" width={100} height={100} />
       </div>
-      <div className="absolute left-[46%] flex justify-center items-center pr-4">
+      <div className="hidden md:absolute md:left-1/2 md:top-1/2 md:flex md:-translate-x-1/2 md:-translate-y-1/2">
         <Location location="Recife - PE"></Location>
       </div>
-      <div className="flex gap-4 ">
-        <div>
+      <div className="flex flex-wrap items-center justify-end gap-2 md:gap-4">
+        <div className="hidden md:flex">
           <Button
             className="text-black bg-transparent border-none shadow-none text-lg hover:bg-gray-200"
             onClick={() => (window.location.href = '/')}
@@ -57,6 +57,9 @@ const TopBarLogged: React.FC = () => {
             Carrinho
           </Button>
         </div>
+      </div>
+      <div className="flex w-full justify-center md:hidden">
+        <Location location="Recife - PE"></Location>
       </div>
     </div>
   );

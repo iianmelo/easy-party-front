@@ -29,6 +29,10 @@ const CreateParty: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [services, setServices] = useState<Service[]>([]);
     const [haveNothing, setHaveNothing] = useState(false);
+    const [usingMock, setUsingMock] = useState(false);
+
+    const specialtiesOf = (service: Service) =>
+        Array.isArray(service.specialties) ? service.specialties : [];
 
 
     const handleSubmit = async () => {
@@ -36,12 +40,10 @@ const CreateParty: React.FC = () => {
         setHaveNothing(false);
         try {
             const data = await getServices({ prompt });
-            if (data.length === 0) {
-                setHaveNothing(true);
-            } else {
-                setHaveNothing(false);
-            }
-            setServices(data);
+            const list = Array.isArray(data.services) ? data.services : [];
+            setUsingMock(data.source === 'mock');
+            setHaveNothing(list.length === 0);
+            setServices(list);
         }catch(err) {
             console.log(err);
             alert("Erro ao buscar serviços");
@@ -75,6 +77,7 @@ const CreateParty: React.FC = () => {
                         value={prompt}
                         onChange={(e) => setPrompt(e.target.value)}
                         className="w-full p-3 text-gray-900 rounded-lg focus:outline-none"
+                        spellCheck={false}
                     />
                     <button
                         onClick={handleSubmit}
@@ -99,32 +102,37 @@ const CreateParty: React.FC = () => {
             </div>
             <div>
                 {loading && <p className="text-black text-xl text-center font-bold animate-pulse">Encontrando os melhores serviços para sua festa ...</p>}
+                {usingMock && services.length > 0 && (
+                    <p className="text-center text-sm text-gray-600 mt-4 px-6">
+                        Modo demonstração: a API de recomendação não respondeu, então estas sugestões vêm de um catálogo local.
+                    </p>
+                )}
                 {["Alimentação", "Áudio Visual", "Entretenimento", "Local", "Ornamentação"].map((category) => {
                     let filteredServices: Service[] = [];
                     switch (category) {
                         case "Alimentação":
                             filteredServices = services.filter(service =>
-                                service.specialties.includes("Buffet") || service.specialties.includes("Catering")
+                                specialtiesOf(service).includes("Buffet") || specialtiesOf(service).includes("Catering")
                             );
                             break;
                         case "Áudio Visual":
                             filteredServices = services.filter(service =>
-                                service.specialties.includes("Som") || service.specialties.includes("Iluminação")
+                                specialtiesOf(service).includes("Som") || specialtiesOf(service).includes("Iluminação")
                             );
                             break;
                         case "Entretenimento":
                             filteredServices = services.filter(service =>
-                                service.specialties.includes("Fotografia") || service.specialties.includes("DJ")
+                                specialtiesOf(service).includes("Fotografia") || specialtiesOf(service).includes("DJ")
                             );
                             break;
                         case "Local":
                             filteredServices = services.filter(service =>
-                                service.specialties.includes("Espaço")
+                                specialtiesOf(service).includes("Espaço")
                             );
                             break;
                         case "Ornamentação":
                             filteredServices = services.filter(service =>
-                                service.specialties.includes("Decoração") || service.specialties.includes("Lembrancinhas")
+                                specialtiesOf(service).includes("Decoração") || specialtiesOf(service).includes("Lembrancinhas")
                             );
                             break;
                         default:
